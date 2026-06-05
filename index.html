@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="AKD Academy — Académie de danse, arts et culture à Douala, Cameroun. Cours de danse, arts visuels, musique et taekwondo aux Galleries de Bonamoussadi."/>
+  <meta property="og:title" content="AKD Academy | I'DART — L'art au cœur de la passion"/>
+  <meta property="og:description" content="Académie de danse et arts pluridisciplinaires à Douala. Rejoignez-nous aux Galleries de Bonamoussadi."/>
+  <meta property="og:type" content="website"/>
+  <title>AKD Academy | I'DART — Douala, Cameroun</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" type="image/svg+xml" href="logo.svg"/>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+<!-- ══════════════════════ SPARKLE CANVAS ══════════════════════ -->
+<canvas id="sparkle-canvas" style="position:fixed;inset:0;pointer-events:none;z-index:9998;" aria-hidden="true"></canvas>
+
+<!-- ══════════════════════════ NAV ══════════════════════════════ -->
+<nav id="nav" role="navigation" aria-label="Navigation principale">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Accueil AKD Academy">
+      <img src="logo.svg" alt="I'DART" height="36"/>
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Accueil</a>
+      <a href="danse.html">Danse AKD</a>
+      <a href="galerie.html">Galerie</a>
+      <a href="ateliers.html">Futurs Ateliers</a>
+      <a href="apropos.html">À propos</a>
+    </div>
+    <div class="nav-actions">
+      <a href="danse.html#inscription" class="btn btn-gold btn-sm">S'inscrire</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileNav()">Accueil</a>
+    <a href="danse.html" onclick="closeMobileNav()">Danse AKD</a>
+    <a href="galerie.html" onclick="closeMobileNav()">Galerie</a>
+    <a href="ateliers.html" onclick="closeMobileNav()">Futurs Ateliers</a>
+    <a href="apropos.html" onclick="closeMobileNav()">À propos</a>
+    <a href="danse.html#inscription" class="btn btn-gold" onclick="closeMobileNav()">S'inscrire maintenant</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════ HERO ══════════════════════════════ -->
+<section id="hero" aria-label="Bannière principale">
+  <div class="hero-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- 🎬 Remplace "video/hero.mp4" par ta vraie vidéo -->
+  <video class="hero-video" id="heroVideo" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="img/hero-poster.jpg">
+    <source src="video/hero.mp4" type="video/mp4"/>
+  </video>
+  <div class="hero-overlay" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Bonamoussadi · Douala · Cameroun
+    </div>
+    <h1 class="hero-h1">
+      L'art de se<br/>
+      <em>révéler</em>
+    </h1>
+    <p class="hero-sub">
+      AKD Academy, c'est bien plus que de la danse. C'est un espace où chaque jeune découvre, s'exprime et grandit à travers l'art — dans un cadre professionnel et bienveillant.
+    </p>
+    <div class="hero-ctas">
+      <a href="danse.html#inscription" class="btn btn-gold btn-lg">
+        <i class="fa-regular fa-calendar-check"></i>
+        S'inscrire aux cours
+      </a>
+      <a href="galerie.html" class="btn btn-glass btn-lg">
+        <i class="fa-solid fa-images"></i>
+        Voir la galerie
+      </a>
+    </div>
+    <div class="hero-trust">
+      <i class="fa-solid fa-circle-check" style="color:var(--gold);"></i>
+      Ouvert depuis 2021
+      <span class="sep">·</span>
+      <i class="fa-solid fa-circle-check" style="color:var(--gold);"></i>
+      Cours Lun / Mer / Ven
+      <span class="sep">·</span>
+      <i class="fa-brands fa-whatsapp" style="color:#4ADE80;"></i>
+      <a href="https://wa.me/237657114088?text=Bonjour%20AKD%20Academy%20!">+237 657 114 088</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">Défiler</div>
+</section>
+
+<!-- ══════════════════════ MARQUEE ═══════════════════════════════ -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Cours de Danse</span><span class="dot">✦</span>
+    <span>Arts Visuels</span><span class="dot">✦</span>
+    <span>Taekwondo</span><span class="dot">✦</span>
+    <span>Musique & Chant</span><span class="dot">✦</span>
+    <span>Bonamoussadi Galleries</span><span class="dot">✦</span>
+    <span>Douala · Cameroun</span><span class="dot">✦</span>
+    <span>AKD Academy</span><span class="dot">✦</span>
+    <span>I'DART</span><span class="dot">✦</span>
+    <span>Cours de Danse</span><span class="dot">✦</span>
+    <span>Arts Visuels</span><span class="dot">✦</span>
+    <span>Taekwondo</span><span class="dot">✦</span>
+    <span>Musique & Chant</span><span class="dot">✦</span>
+    <span>Bonamoussadi Galleries</span><span class="dot">✦</span>
+    <span>Douala · Cameroun</span><span class="dot">✦</span>
+    <span>AKD Academy</span><span class="dot">✦</span>
+    <span>I'DART</span><span class="dot">✦</span>
+  </div>
+</div>
+
+<!-- ══════════════════════ NOTRE ACADÉMIE ════════════════════════ -->
+<section id="about" class="section" aria-label="Notre Académie">
+  <div class="wrap">
+    <div class="about-grid">
+
+      <!-- Image gauche -->
+      <div class="about-img-wrap reveal reveal-left">
+        <!-- 🖼️ Remplace par une vraie photo : img/about-main.jpg -->
+        <div class="about-img-main">
+          <img src="img/about-main.jpg" alt="Cours de danse AKD Academy" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#4C1D95,#7C3AED)';this.style.display='none'"/>
+        </div>
+        <!-- Petite image en surimpression -->
+        <div class="about-img-accent">
+          <img src="img/about-accent.jpg" alt="Élèves AKD Academy" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#D4860A,#F5C842)';this.style.display='none'"/>
+        </div>
+        <!-- Badge flottant -->
+        <div class="about-img-badge">
+          <span class="about-img-badge-icon">🏆</span>
+          <div class="about-img-badge-text">
+            <strong>2021</strong>
+            Fondée à Douala
+          </div>
+        </div>
+      </div>
+
+      <!-- Texte droite -->
+      <div class="about-content">
+        <div class="section-label reveal">Notre Académie</div>
+        <h2 class="reveal">Où l'art rencontre la <em>passion</em></h2>
+
+        <p class="reveal reveal-d1">
+          AKD Academy est née d'une conviction profonde : <strong style="color:var(--white)">l'art a le pouvoir de transformer des vies.</strong> Depuis 2021, nous accueillons les jeunes talents de Douala dans un cadre professionnel, bienveillant et stimulant.
+        </p>
+        <p class="reveal reveal-d2">
+          Des cours encadrés par des formateurs passionnés, une ambiance familiale unique, et des performances qui valorisent chaque élève. AKD Academy est bien plus qu'une école — c'est une famille artistique.
+        </p>
+        <p class="reveal reveal-d2" style="color:var(--purple-pale); font-size:0.9rem;">
+          Portée par <strong style="color:var(--gold)">Eyenga Ngo'o R.</strong>, la fondatrice, l'académie est aujourd'hui le premier pôle actif du grand projet <em>I'DART</em> : un centre artistique pluridisciplinaire en construction.
+        </p>
+
+        <div class="about-perks">
+          <div class="about-perk reveal reveal-d3">
+            <div class="about-perk-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <div class="about-perk-text"><strong>Cours personnalisés</strong> — Chaque élève progresse à son rythme. Débutants comme confirmés ont leur place.</div>
+          </div>
+          <div class="about-perk reveal reveal-d4">
+            <div class="about-perk-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="about-perk-text"><strong>Encadrement professionnel</strong> — Formateurs qualifiés, espace sécurisé, suivi bienveillant.</div>
+          </div>
+          <div class="about-perk reveal reveal-d5">
+            <div class="about-perk-icon"><i class="fa-solid fa-trophy"></i></div>
+            <div class="about-perk-text"><strong>Performances & showcases</strong> — Des événements réguliers pour que chaque talent soit célébré.</div>
+          </div>
+          <div class="about-perk reveal reveal-d5">
+            <div class="about-perk-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="about-perk-text"><strong>Galleries de Bonamoussadi</strong> — Facilement accessible à Douala.</div>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:12px; flex-wrap:wrap;" class="reveal reveal-d6">
+          <a href="danse.html" class="btn btn-primary">Découvrir les cours</a>
+          <a href="apropos.html" class="btn btn-outline-gold">Notre histoire →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ STATS ══════════════════════════════ -->
+<div class="stats-strip">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number" data-count="4" data-suffix="+">0</div>
+        <div class="stat-label">Années d'expérience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-count="3" data-suffix="×/sem">0</div>
+        <div class="stat-label">Séances par semaine</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-count="5" data-suffix=" disciplines">0</div>
+        <div class="stat-label">À terme avec I'DART</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ DISCIPLINES ═══════════════════════════ -->
+<section id="disciplines" class="section" aria-label="Nos disciplines">
+  <div class="wrap">
+    <div class="disciplines-header">
+      <div class="section-label centered reveal">Ce que nous proposons</div>
+      <h2 class="reveal">Des disciplines pour <em>tous les talents</em></h2>
+      <p class="lede reveal" style="margin: 14px auto 0; text-align:center;">AKD Academy ouvre la voie. Bientôt, I'DART réunira danse, musique, arts visuels et arts martiaux sous un même toit.</p>
+    </div>
+
+    <div class="disciplines-grid">
+      <!-- Danse — ACTIF -->
+      <div class="disc-card active reveal reveal-d1">
+        <div class="disc-icon">💃</div>
+        <div class="disc-name">Cours de Danse</div>
+        <div class="disc-desc">Notre cœur de métier depuis 2021. Des cours dynamiques pour tous niveaux dans une ambiance unique.</div>
+        <ul class="disc-features">
+          <li>Tous niveaux — débutants bienvenus</li>
+          <li>Lun / Mer / Ven · 10h–13h</li>
+          <li>5 000 FCFA inscription · 10 000/mois</li>
+        </ul>
+        <div style="margin-top:22px;">
+          <a href="danse.html" class="btn btn-glass btn-sm">Voir les cours →</a>
+        </div>
+      </div>
+
+      <!-- Arts Visuels — BIENTÔT -->
+      <div class="disc-card reveal reveal-d2">
+        <span class="disc-badge">Bientôt</span>
+        <div class="disc-icon">🎨</div>
+        <div class="disc-name">Arts Visuels</div>
+        <div class="disc-desc">Dessin, peinture et poterie dans un atelier créatif stimulant. Expression libre pour petits et grands.</div>
+        <ul class="disc-features">
+          <li>Dessin & peinture</li>
+          <li>Poterie & modelage</li>
+          <li>Tous âges</li>
+        </ul>
+        <div style="margin-top:22px;">
+          <a href="ateliers.html" class="btn btn-outline-gold btn-sm">Pré-inscription →</a>
+        </div>
+      </div>
+
+      <!-- Taekwondo — BIENTÔT -->
+      <div class="disc-card reveal reveal-d3">
+        <span class="disc-badge">Bientôt</span>
+        <div class="disc-icon">🥋</div>
+        <div class="disc-name">Taekwondo</div>
+        <div class="disc-desc">Discipline du corps et de l'esprit. Le taekwondo développe la confiance, la concentration et le respect.</div>
+        <ul class="disc-features">
+          <li>Tous niveaux & âges</li>
+          <li>Discipline & self-contrôle</li>
+          <li>Compétitions & ceintures</li>
+        </ul>
+        <div style="margin-top:22px;">
+          <a href="ateliers.html" class="btn btn-outline-gold btn-sm">Pré-inscription →</a>
+        </div>
+      </div>
+
+      <!-- Musique — BIENTÔT -->
+      <div class="disc-card reveal reveal-d4" style="grid-column: 1 / -1; max-width: 680px; margin: 0 auto; width: 100%;">
+        <span class="disc-badge">Bientôt</span>
+        <div class="disc-icon">🎵</div>
+        <div class="disc-name">Musique & Chant</div>
+        <div class="disc-desc">Guitare, piano, percussions, chant et technique vocale. Éveille le musicien qui est en toi.</div>
+        <ul class="disc-features" style="columns: 2; gap: 12px;">
+          <li>Chant & voix</li>
+          <li>Guitare & piano</li>
+          <li>Percussions africaines</li>
+          <li>Théorie musicale</li>
+        </ul>
+        <div style="margin-top:22px;">
+          <a href="ateliers.html" class="btn btn-outline-gold btn-sm">Pré-inscription →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- ══════════════════════ APERÇU GALERIE ════════════════════════ -->
+<section id="gallery-preview" class="section" aria-label="Aperçu galerie">
+  <div class="wrap">
+    <div class="gallery-preview-header">
+      <div class="section-label centered reveal">Nos moments</div>
+      <h2 class="reveal">Découvre <em>l'ambiance</em> AKD</h2>
+      <p class="lede reveal" style="margin:14px auto 0; text-align:center;">Chaque image raconte une histoire. Clique pour explorer la galerie complète.</p>
+    </div>
+
+    <!-- 🖼️ Remplace les src par tes vraies photos/vidéos -->
+    <div class="gallery-preview-grid">
+      <div class="gallery-preview-item tall reveal reveal-d1" onclick="location.href='galerie.html'">
+        <img src="img/galerie/akd-01.jpg" alt="AKD Academy danse" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#4C1D95,#7C3AED)'"/>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon"><i class="fa-solid fa-images"></i></div>
+          <div class="gallery-overlay-text">Cours de danse</div>
+        </div>
+      </div>
+      <div class="gallery-preview-item reveal reveal-d2" onclick="location.href='galerie.html'">
+        <img src="img/galerie/akd-02.jpg" alt="Performance AKD" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#D4860A,#F5C842)'"/>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon"><i class="fa-solid fa-images"></i></div>
+          <div class="gallery-overlay-text">Performance</div>
+        </div>
+      </div>
+      <div class="gallery-preview-item reveal reveal-d3" onclick="location.href='galerie.html'">
+        <img src="img/galerie/akd-03.jpg" alt="Élèves AKD" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#EA580C,#7C3AED)'"/>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon"><i class="fa-solid fa-images"></i></div>
+          <div class="gallery-overlay-text">Nos élèves</div>
+        </div>
+      </div>
+      <div class="gallery-preview-item reveal reveal-d4" onclick="location.href='galerie.html'">
+        <!-- 🎥 Exemple de vidéo en aperçu -->
+        <img src="img/galerie/akd-04.jpg" alt="Showcase AKD" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#1A0A3B,#4C1D95)'"/>
+        <span class="video-play-badge"><i class="fa-solid fa-play"></i> Vidéo</span>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon"><i class="fa-solid fa-play"></i></div>
+          <div class="gallery-overlay-text">Showcase</div>
+        </div>
+      </div>
+      <div class="gallery-preview-item wide reveal reveal-d2" onclick="location.href='galerie.html'">
+        <img src="img/galerie/akd-05.jpg" alt="Académie AKD" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#4C1D95,#D4860A)'"/>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon"><i class="fa-solid fa-images"></i></div>
+          <div class="gallery-overlay-text">L'académie en action</div>
+        </div>
+      </div>
+      <div class="gallery-preview-item reveal reveal-d3" onclick="location.href='galerie.html'">
+        <img src="img/galerie/akd-06.jpg" alt="Danse AKD" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,#7C3AED,#EA580C)'"/>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon"><i class="fa-solid fa-images"></i></div>
+          <div class="gallery-overlay-text">Expression artistique</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:44px;" class="reveal">
+      <a href="galerie.html" class="btn btn-primary btn-lg">
+        <i class="fa-solid fa-images"></i>
+        Voir toute la galerie
+      </a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- ══════════════════════ TÉMOIGNAGES ═══════════════════════════ -->
+<section id="testimonials" class="section" aria-label="Témoignages">
+  <div class="wrap">
+    <div class="testi-header">
+      <div class="section-label centered reveal">Ce qu'ils disent</div>
+      <h2 class="reveal">Nos élèves & <em>leurs parents</em></h2>
+      <p class="lede reveal" style="margin:14px auto 0; text-align:center;">Des centaines de familles nous font confiance à Douala.</p>
+    </div>
+
+    <div class="testi-grid">
+      <div class="testi-card reveal reveal-d1">
+        <span class="testi-quote">"</span>
+        <div class="testi-stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="testi-text">Ma fille a intégré AKD Academy il y a 6 mois. La transformation est incroyable — confiance, discipline, joie de vivre. Les formateurs sont professionnels et à l'écoute. Je recommande à tous les parents !</p>
+        <div class="testi-author">
+          <div class="testi-avatar">A</div>
+          <div>
+            <div class="testi-name">Amina B.</div>
+            <div class="testi-role">Parent d'élève · Douala</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal reveal-d2">
+        <span class="testi-quote">"</span>
+        <div class="testi-stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="testi-text">J'avais peur que mon fils n'accroche pas à la danse. Maintenant il ne rate aucun cours ! L'ambiance à AKD Academy est vraiment familiale. Les showcases sont magnifiques — on a pleuré de fierté.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">K</div>
+          <div>
+            <div class="testi-name">Kevin & Marie T.</div>
+            <div class="testi-role">Parents · Bonamoussadi</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal reveal-d3">
+        <span class="testi-quote">"</span>
+        <div class="testi-stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="testi-text">En tant qu'élève, je peux dire qu'AKD c'est une vraie famille. On ne vient pas juste danser — on grandit ensemble. La fondatrice croit vraiment en chacun de nous. Merci pour tout !</p>
+        <div class="testi-author">
+          <div class="testi-avatar">C</div>
+          <div>
+            <div class="testi-name">Christelle N.</div>
+            <div class="testi-role">Élève AKD · Douala</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ INSCRIPTION CTA ═══════════════════════ -->
+<section id="inscription-cta" class="section" aria-label="Inscription">
+  <div class="cta-dots" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="cta-grid">
+      <!-- Info gauche -->
+      <div class="cta-info">
+        <div class="section-label" style="color:rgba(255,255,255,0.5);">
+          <span style="background:rgba(255,255,255,0.2); height:1px; width:32px; display:block;"></span>
+          Rejoindre l'académie
+          <span style="background:rgba(255,255,255,0.2); height:1px; width:32px; display:block;"></span>
+        </div>
+        <h2 class="reveal" style="color:var(--white);">Prêt(e) pour ta <em style="color:var(--gold-light);">transformation ?</em></h2>
+        <p class="reveal">Remplis le formulaire et nous te recontactons sur WhatsApp pour confirmer ton inscription. Des questions ? Écris-nous directement.</p>
+
+        <div class="cta-contacts reveal">
+          <div class="cta-contact-row">
+            <div class="cta-contact-icon"><i class="fa-brands fa-whatsapp"></i></div>
+            <span><a href="https://wa.me/237657114088?text=Bonjour%20AKD%20Academy%20!">+237 657 114 088</a></span>
+          </div>
+          <div class="cta-contact-row">
+            <div class="cta-contact-icon"><i class="fa-solid fa-envelope"></i></div>
+            <span><a href="mailto:roxyann783@gmail.com">roxyann783@gmail.com</a></span>
+          </div>
+          <div class="cta-contact-row">
+            <div class="cta-contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <span>Galleries de Bonamoussadi, Douala</span>
+          </div>
+          <div class="cta-contact-row">
+            <div class="cta-contact-icon"><i class="fa-solid fa-clock"></i></div>
+            <span>Lun · Mer · Ven — 10h00 à 13h00</span>
+          </div>
+        </div>
+
+        <!-- Tarifs rapides -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:32px;" class="reveal">
+          <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:var(--r); padding:16px; text-align:center;">
+            <div style="font-family:var(--font-display); font-size:1.8rem; color:var(--gold); font-weight:600; line-height:1;">5 000</div>
+            <div style="font-size:0.72rem; color:rgba(255,255,255,0.5); margin-top:4px; letter-spacing:1px;">FCFA · Inscription</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:var(--r); padding:16px; text-align:center;">
+            <div style="font-family:var(--font-display); font-size:1.8rem; color:var(--gold); font-weight:600; line-height:1;">10 000</div>
+            <div style="font-size:0.72rem; color:rgba(255,255,255,0.5); margin-top:4px; letter-spacing:1px;">FCFA · /mois</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formulaire droite -->
+      <div class="cta-form-card reveal reveal-d2">
+        <div id="formSuccess" class="form-success">
+          <div class="form-success-icon"><i class="fa-solid fa-circle-check"></i></div>
+          <div class="form-success-title">Inscription envoyée !</div>
+          <div class="form-success-text">Super ! On te recontacte bientôt sur WhatsApp pour confirmer ta place. Bienvenue dans la famille AKD 🎉</div>
+          <button onclick="resetForm()" style="margin-top:20px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:100px; padding:10px 28px; color:var(--white); font-size:11px; letter-spacing:2px; text-transform:uppercase; cursor:pointer; font-family:var(--font-body);">
+            Nouvelle inscription
+          </button>
+        </div>
+
+        <form id="inscriptionForm" novalidate>
+          <h3 style="color:var(--white); font-size:1.55rem; margin-bottom:26px;">Inscription en ligne</h3>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="f-prenom">Prénom <span style="color:var(--orange)">*</span></label>
+              <input class="form-input" type="text" id="f-prenom" name="prenom" placeholder="Ton prénom" required autocomplete="given-name"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-nom">Nom <span style="color:var(--orange)">*</span></label>
+              <input class="form-input" type="text" id="f-nom" name="nom" placeholder="Ton nom" required autocomplete="family-name"/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="f-age">Âge <span style="color:var(--orange)">*</span></label>
+            <input class="form-input" type="number" id="f-age" name="age" placeholder="Ton âge" min="4" max="60" required/>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="f-whatsapp">Numéro WhatsApp <span style="color:var(--orange)">*</span></label>
+            <input class="form-input" type="tel" id="f-whatsapp" name="whatsapp" placeholder="+237 6XX XXX XXX" required autocomplete="tel"/>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="f-niveau">Niveau actuel</label>
+            <select class="form-select" id="f-niveau" name="niveau">
+              <option value="">— Choisir —</option>
+              <option value="debutant">Débutant (jamais dansé)</option>
+              <option value="intermediaire">Intermédiaire</option>
+              <option value="avance">Avancé</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="f-message">Message (optionnel)</label>
+            <textarea class="form-textarea" id="f-message" name="message" placeholder="Une question, une précision…"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-gold btn-full btn-lg" id="submitBtn">
+            <i class="fa-regular fa-paper-plane"></i>
+            Envoyer mon inscription
+          </button>
+          <p style="text-align:center; font-size:11.5px; color:rgba(255,255,255,0.3); margin-top:10px;">
+            Ou directement : <a href="https://wa.me/237657114088?text=Bonjour%20!%20Je%20veux%20m'inscrire." style="color:var(--gold-light);">WhatsApp →</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ FOOTER ════════════════════════════════ -->
+<footer aria-label="Pied de page">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="logo.svg" alt="I'DART" class="footer-logo"/>
+        <div class="footer-tagline">Académie de danse & arts · Douala</div>
+        <div class="footer-desc">AKD Academy, premier pôle du projet I'DART — un empire créatif qui façonne l'élite artistique de demain. "L'Art au cœur de la passion."</div>
+        <div class="footer-social">
+          <a href="https://wa.me/237657114088" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="mailto:roxyann783@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+          <a href="tel:+237657114088" aria-label="Téléphone"><i class="fa-solid fa-phone"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Pages</div>
+        <div class="footer-links">
+          <a href="index.html"><i class="fa-solid fa-angle-right"></i> Accueil</a>
+          <a href="danse.html"><i class="fa-solid fa-angle-right"></i> Danse AKD</a>
+          <a href="galerie.html"><i class="fa-solid fa-angle-right"></i> Galerie</a>
+          <a href="ateliers.html"><i class="fa-solid fa-angle-right"></i> Futurs Ateliers</a>
+          <a href="apropos.html"><i class="fa-solid fa-angle-right"></i> À propos</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-links">
+          <a href="tel:+237657114088"><i class="fa-solid fa-phone"></i> +237 657 114 088</a>
+          <a href="mailto:roxyann783@gmail.com"><i class="fa-solid fa-envelope"></i> roxyann783@gmail.com</a>
+          <a href="#"><i class="fa-solid fa-location-dot"></i> Galleries Bonamoussadi, Douala</a>
+          <a href="https://wa.me/237657114088" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Horaires</div>
+        <div style="display:flex; flex-direction:column; gap:8px; margin-top:4px;">
+          <div style="display:flex; justify-content:space-between; font-size:13px; color:rgba(255,255,255,0.55); border-bottom:1px solid var(--border); padding-bottom:7px;">
+            <span>Lundi</span><span style="color:var(--gold);">10h–13h</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:13px; color:rgba(255,255,255,0.55); border-bottom:1px solid var(--border); padding-bottom:7px;">
+            <span>Mercredi</span><span style="color:var(--gold);">10h–13h</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:13px; color:rgba(255,255,255,0.55);">
+            <span>Vendredi</span><span style="color:var(--gold);">10h–13h</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2025 I'DART / AKD Academy · Tous droits réservés.</div>
+      <div style="font-size:10.5px; opacity:0.4;">Galleries de Bonamoussadi · Douala · Cameroun · <em>"De passion à ascension"</em></div>
+      <div>Site édité par <strong style="color:rgba(255,255,255,0.45)">I'DART</strong></div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════ FLOAT BAR (mobile) ═══════════════════ -->
+<div class="float-bar" role="complementary">
+  <a href="danse.html#inscription" class="float-bar-book">
+    <i class="fa-regular fa-calendar-check"></i> S'inscrire
+  </a>
+  <a href="https://wa.me/237657114088?text=Bonjour%20AKD%20Academy%20!" class="float-bar-whatsapp" target="_blank" rel="noopener">
+    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+  </a>
+</div>
+
+<div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+<!-- ══════════════════════ JAVASCRIPT ════════════════════════════ -->
+<script>
+// ── NAVBAR SCROLL ──────────────────────────────────────────
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+
+// ── MOBILE NAV ─────────────────────────────────────────────
+const hamburger = document.getElementById('hamburger');
+const mobileNav  = document.getElementById('mobileNav');
+hamburger.addEventListener('click', () => {
+  const open = mobileNav.classList.toggle('open');
+  hamburger.classList.toggle('open', open);
+  hamburger.setAttribute('aria-expanded', open);
+});
+function closeMobileNav() {
+  mobileNav.classList.remove('open');
+  hamburger.classList.remove('open');
+  hamburger.setAttribute('aria-expanded', 'false');
+}
+
+// ── SCROLL REVEAL ──────────────────────────────────────────
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+// ── COUNTER ANIMATION ─────────────────────────────────────
+function animCount(el, target, suffix, dur) {
+  const t0 = performance.now();
+  (function tick(now) {
+    const p = Math.min((now - t0) / dur, 1);
+    const e = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.round(e * target) + (suffix || '');
+    if (p < 1) requestAnimationFrame(tick);
+  })(t0);
+}
+const countObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const t = parseInt(e.target.dataset.count);
+    const s = e.target.dataset.suffix || '';
+    animCount(e.target, t, s, 1600);
+    countObs.unobserve(e.target);
+  });
+}, { threshold: 0.6 });
+document.querySelectorAll('[data-count]').forEach(el => countObs.observe(el));
+
+// ── HERO VIDEO AUTOPLAY (iOS safe) ───────────────────────
+(function() {
+  const vid = document.getElementById('heroVideo');
+  if (!vid) return;
+  const tryPlay = () => { vid.muted = true; vid.play().catch(() => {}); };
+  tryPlay();
+  document.addEventListener('touchstart', function iosT() { if (vid.paused) tryPlay(); document.removeEventListener('touchstart', iosT); }, { once: true, passive: true });
+  window.addEventListener('pageshow', () => { if (vid && vid.paused) tryPlay(); });
+})();
+
+// ── HERO VIDEO PARALLAX ──────────────────────────────────
+(function() {
+  const vid = document.querySelector('.hero-video');
+  const content = document.querySelector('.hero-content');
+  if (!vid || !content) return;
+  const limit = window.innerHeight;
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y > limit) return;
+    vid.style.transform     = `translateY(${y * 0.35}px)`;
+    content.style.transform = `translateY(${y * 0.15}px)`;
+    content.style.opacity   = String(1 - (y / limit) * 1.5);
+  }, { passive: true });
+})();
+
+// ── SMOOTH ANCHOR SCROLL ─────────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - 80, behavior: 'smooth' });
+  });
+});
+
+// ── TOAST ────────────────────────────────────────────────
+function showToast(msg, ok = true) {
+  const t = document.getElementById('toast');
+  t.innerHTML = (ok ? '✅ ' : '❌ ') + msg;
+  t.style.background = ok ? 'linear-gradient(135deg,#4C1D95,#7C3AED)' : 'linear-gradient(135deg,#7F1D1D,#DC2626)';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 4500);
+}
+
+// ── INSCRIPTION FORM ─────────────────────────────────────
+const SCRIPT_URL = 'VOTRE_URL_GOOGLE_APPS_SCRIPT_ICI'; // 👈 voir GUIDE-DEPLOIEMENT.txt
+
+document.getElementById('inscriptionForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn  = document.getElementById('submitBtn');
+  const prenom   = form.prenom.value.trim();
+  const nom      = form.nom.value.trim();
+  const age      = form.age.value.trim();
+  const whatsapp = form['f-whatsapp'] ? form['f-whatsapp'].value.trim() : form.whatsapp.value.trim();
+  if (!prenom || !nom || !age) { showToast('Remplis les champs obligatoires.', false); return; }
+  btn.textContent = 'Envoi…'; btn.disabled = true;
+  const data = { type:'inscription_danse', prenom, nom, age, whatsapp, niveau: form.niveau.value, message: form.message.value.trim(), date: new Date().toLocaleString('fr-FR') };
+  try {
+    await fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data) });
+    document.getElementById('inscriptionForm').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+    document.getElementById('formSuccess').classList.add('show');
+  } catch {
+    const msg = encodeURIComponent(`Bonjour AKD ! Inscription: ${prenom} ${nom}, ${age} ans, ${whatsapp}`);
+    window.open(`https://wa.me/237657114088?text=${msg}`, '_blank');
+    showToast('Redirigé vers WhatsApp.');
+  } finally { btn.textContent = 'Envoyer mon inscription'; btn.disabled = false; }
+});
+function resetForm() {
+  document.getElementById('inscriptionForm').reset();
+  document.getElementById('inscriptionForm').style.display = '';
+  document.getElementById('formSuccess').style.display = 'none';
+  document.getElementById('formSuccess').classList.remove('show');
+}
+
+// ── SPARKLE CURSOR (desktop) ─────────────────────────────
+(function() {
+  if (window.matchMedia('(hover:none)').matches) return;
+  const canvas = document.getElementById('sparkle-canvas');
+  const ctx = canvas.getContext('2d');
+  let W = window.innerWidth, H = window.innerHeight;
+  canvas.width = W; canvas.height = H;
+  window.addEventListener('resize', () => { W = window.innerWidth; H = window.innerHeight; canvas.width = W; canvas.height = H; });
+  const COLORS = ['#F5C842','#A78BFA','#7C3AED','#FDE68A','#C4B5FD','#ffffff','#D4860A'];
+  const pts = [];
+  let mx = -200, my = -200, lx = -200, ly = -200;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  class Sparkle {
+    constructor(x,y) {
+      this.x = x + (Math.random()-0.5)*20; this.y = y + (Math.random()-0.5)*20;
+      this.r = Math.random()*3+0.8; this.color = COLORS[Math.floor(Math.random()*COLORS.length)];
+      this.life = 1; this.decay = Math.random()*0.032+0.016;
+      this.vx = (Math.random()-0.5)*1.8; this.vy = (Math.random()-0.5)*1.8-0.5;
+      this.rot = Math.random()*Math.PI*2; this.rotV = (Math.random()-0.5)*0.2;
+    }
+    tick() { this.x+=this.vx; this.y+=this.vy; this.vy+=0.045; this.life-=this.decay; this.rot+=this.rotV; this.r*=0.985; }
+    draw() {
+      ctx.save(); ctx.translate(this.x,this.y); ctx.rotate(this.rot);
+      ctx.globalAlpha = Math.max(0, this.life*0.88);
+      ctx.fillStyle = this.color;
+      const s = this.r;
+      ctx.beginPath();
+      ctx.moveTo(0,-s); ctx.lineTo(s*0.28,-s*0.28); ctx.lineTo(s,0); ctx.lineTo(s*0.28,s*0.28);
+      ctx.lineTo(0,s); ctx.lineTo(-s*0.28,s*0.28); ctx.lineTo(-s,0); ctx.lineTo(-s*0.28,-s*0.28);
+      ctx.closePath(); ctx.fill(); ctx.restore();
+    }
+  }
+  (function loop() {
+    ctx.clearRect(0,0,W,H);
+    const d = Math.hypot(mx-lx,my-ly);
+    if (d > 4) { const c = Math.min(Math.floor(d/4),5); for (let i=0;i<c;i++) pts.push(new Sparkle(mx,my)); lx=mx; ly=my; }
+    for (let i=pts.length-1;i>=0;i--) { pts[i].tick(); pts[i].draw(); if (pts[i].life<=0) pts.splice(i,1); }
+    requestAnimationFrame(loop);
+  })();
+})();
+
+// ── GALLERY 3D TILT ──────────────────────────────────────
+(function() {
+  if (window.matchMedia('(hover:none)').matches) return;
+  document.querySelectorAll('.gallery-preview-item').forEach(item => {
+    item.addEventListener('mousemove', e => {
+      const r = item.getBoundingClientRect();
+      const x = ((e.clientX - r.left) / r.width  - 0.5) * 12;
+      const y = ((e.clientY - r.top)  / r.height - 0.5) * -12;
+      item.style.transform = `perspective(700px) rotateX(${y}deg) rotateY(${x}deg) scale(1.03)`;
+    });
+    item.addEventListener('mouseleave', () => { item.style.transform = ''; });
+  });
+})();
+</script>
+</body>
+</html>

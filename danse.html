@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Cours de danse AKD Academy à Douala — Planning, tarifs et formulaire d'inscription. Bonamoussadi Galleries."/>
+  <title>Cours de Danse — AKD Academy | Douala</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" type="image/svg+xml" href="logo.svg"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+<canvas id="sparkle-canvas" style="position:fixed;inset:0;pointer-events:none;z-index:9998;" aria-hidden="true"></canvas>
+
+<!-- ===== NAVIGATION ===== -->
+<nav id="nav" role="navigation" aria-label="Navigation principale">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="logo.svg" alt="I'DART" height="36"/></a>
+    <div class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="danse.html" class="active">Danse AKD</a>
+      <a href="galerie.html">Galerie</a>
+      <a href="ateliers.html">Futurs Ateliers</a>
+      <a href="apropos.html">À propos</a>
+    </div>
+    <div class="nav-actions"><a href="#inscription" class="btn btn-gold btn-sm">S'inscrire</a></div>
+    <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileNav()">Accueil</a>
+    <a href="danse.html" onclick="closeMobileNav()">Danse AKD</a>
+    <a href="galerie.html" onclick="closeMobileNav()">Galerie</a>
+    <a href="ateliers.html" onclick="closeMobileNav()">Futurs Ateliers</a>
+    <a href="apropos.html" onclick="closeMobileNav()">À propos</a>
+    <a href="#inscription" class="btn btn-gold" onclick="closeMobileNav()">S'inscrire</a>
+  </div>
+</nav>
+
+<!-- ===== HERO DANSE ===== -->
+<section class="hero" style="min-height:55svh;" aria-label="AKD Danse">
+  <div class="hero-bg">
+    <div class="orb orb-1" style="background:#EA580C;"></div>
+    <div class="orb orb-2" style="background:#7C3AED;"></div>
+    <div class="hero-bg-gradient"></div>
+  </div>
+  <div class="hero-content container">
+    <span class="hero-badge">💃 Seul pôle actif</span>
+    <h1 class="hero-title">AKD <span class="accent">Danse</span></h1>
+    <p class="hero-sub">Rejoins nos cours de danse à Bonamoussadi. Tous niveaux, tous âges, une ambiance de folie.</p>
+    <div class="hero-actions">
+      <a href="#inscription" class="btn btn-gold">S'inscrire maintenant</a>
+      <a href="https://wa.me/237657114088?text=Bonjour%20!%20Je%20veux%20m'inscrire%20aux%20cours%20de%20danse%20AKD." class="btn btn-whatsapp" target="_blank" rel="noopener">💬 WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRÉSENTATION ===== -->
+<section class="section">
+  <div class="container reveal">
+    <span class="section-label">Les cours</span>
+    <h2 class="section-title">Qu'est-ce qu'on<br/>apprend ici ?</h2>
+    <p class="section-desc mt-2">
+      AKD Academy propose des cours de danse encadrés par des formateurs passionnés et expérimentés. Que tu débuttes ou que tu aies déjà de l'expérience, il y a une place pour toi.
+    </p>
+
+    <div class="card-grid card-grid-2 mt-3">
+      <div class="card reveal reveal-d1">
+        <div class="card-icon">🕺</div>
+        <h3 style="color:var(--white); font-size:1rem; margin-bottom:0.4rem;">Tous niveaux</h3>
+        <p style="font-size:0.88rem; color:var(--purple-pale);">Débutants, intermédiaires, confirmés — chaque élève progresse à son rythme avec un suivi personnalisé.</p>
+      </div>
+      <div class="card reveal reveal-d2">
+        <div class="card-icon">🏆</div>
+        <h3 style="color:var(--white); font-size:1rem; margin-bottom:0.4rem;">Formateurs qualifiés</h3>
+        <p style="font-size:0.88rem; color:var(--purple-pale);">Des professeurs expérimentés qui transmettent leur passion avec bienveillance et professionnalisme.</p>
+      </div>
+      <div class="card reveal reveal-d1">
+        <div class="card-icon">🎭</div>
+        <h3 style="color:var(--white); font-size:1rem; margin-bottom:0.4rem;">Performances</h3>
+        <p style="font-size:0.88rem; color:var(--purple-pale);">Showcases, événements et galas tout au long de l'année pour valoriser le travail de chaque élève.</p>
+      </div>
+      <div class="card reveal reveal-d2">
+        <div class="card-icon">👨‍👩‍👧‍👦</div>
+        <h3 style="color:var(--white); font-size:1rem; margin-bottom:0.4rem;">Ambiance familiale</h3>
+        <p style="font-size:0.88rem; color:var(--purple-pale);">Une communauté chaleureuse où l'on grandit ensemble et où chaque talent est célébré.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- ===== PLANNING ===== -->
+<section class="section section-light">
+  <div class="container reveal">
+    <span class="section-label">Horaires</span>
+    <h2 class="section-title">Planning des <span class="text-gold">cours</span></h2>
+    <p class="section-desc mt-2">Trois séances par semaine pour progresser régulièrement. Les cours ont lieu aux Galleries de Bonamoussadi, Douala.</p>
+
+    <div style="overflow-x:auto; margin-top:1.5rem; border-radius:var(--r); border:1px solid rgba(124,58,237,0.2);">
+      <table class="planning-table">
+        <thead>
+          <tr>
+            <th>Jour</th>
+            <th>Horaires</th>
+            <th>Lieu</th>
+            <th>Statut</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="color:var(--white); font-weight:500;">Lundi</td>
+            <td>10h00 – 13h00</td>
+            <td>Galleries Bonamoussadi</td>
+            <td><span class="planning-badge" style="background:rgba(34,197,94,0.15); border-color:rgba(34,197,94,0.4); color:#4ADE80;">✓ Ouvert</span></td>
+          </tr>
+          <tr>
+            <td style="color:var(--white); font-weight:500;">Mercredi</td>
+            <td>10h00 – 13h00</td>
+            <td>Galleries Bonamoussadi</td>
+            <td><span class="planning-badge" style="background:rgba(34,197,94,0.15); border-color:rgba(34,197,94,0.4); color:#4ADE80;">✓ Ouvert</span></td>
+          </tr>
+          <tr>
+            <td style="color:var(--white); font-weight:500;">Vendredi</td>
+            <td>10h00 – 13h00</td>
+            <td>Galleries Bonamoussadi</td>
+            <td><span class="planning-badge" style="background:rgba(34,197,94,0.15); border-color:rgba(34,197,94,0.4); color:#4ADE80;">✓ Ouvert</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card mt-3" style="background:rgba(245,200,66,0.08); border-color:rgba(245,200,66,0.3);">
+      <p style="font-size:0.88rem; color:var(--purple-pale);">
+        📌 <strong style="color:var(--gold)">À noter :</strong> Les horaires peuvent évoluer en fonction des niveaux et des groupes. Contacte-nous sur WhatsApp pour confirmation avant de venir.
+      </p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- ===== TARIFS ===== -->
+<section class="section">
+  <div class="container reveal">
+    <span class="section-label">Tarifs</span>
+    <h2 class="section-title">Des prix <span class="text-gold">accessibles</span></h2>
+    <p class="section-desc mt-2">Des tarifs pensés pour être accessibles à tous. Pas de mauvaises surprises.</p>
+
+    <div class="card-grid card-grid-2 mt-3">
+      <div class="tarif-card reveal reveal-d1">
+        <p style="font-size:0.8rem; color:var(--grey-text); text-transform:uppercase; letter-spacing:1px;">Frais d'inscription</p>
+        <div class="tarif-price">5 000</div>
+        <p class="tarif-unit">FCFA · une seule fois</p>
+        <p class="mt-2" style="font-size:0.85rem; color:var(--purple-pale);">À régler lors de la première venue. Valable pour toute la durée d'inscription.</p>
+      </div>
+      <div class="tarif-card reveal reveal-d2">
+        <p style="font-size:0.8rem; color:var(--grey-text); text-transform:uppercase; letter-spacing:1px;">Abonnement mensuel</p>
+        <div class="tarif-price">10 000</div>
+        <p class="tarif-unit">FCFA / mois</p>
+        <p class="mt-2" style="font-size:0.85rem; color:var(--purple-pale);">Accès illimité aux 3 séances hebdomadaires. Renouvelable chaque mois.</p>
+      </div>
+    </div>
+
+    <div class="card mt-3 reveal" style="background:rgba(124,58,237,0.1); border-color:rgba(124,58,237,0.35);">
+      <div style="display:flex; align-items:flex-start; gap:0.8rem;">
+        <span style="font-size:1.5rem; flex-shrink:0;">🎁</span>
+        <div>
+          <p style="color:var(--white); font-weight:600; margin-bottom:0.3rem;">-10% pour les premiers inscrits !</p>
+          <p style="font-size:0.85rem; color:var(--purple-pale);">Les tout premiers élèves bénéficient d'une réduction de 10% sur le premier mois d'abonnement. Profite-en vite !</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- ===== FORMULAIRE D'INSCRIPTION ===== -->
+<section class="section section-light" id="inscription">
+  <div class="container reveal">
+    <span class="section-label">Inscription</span>
+    <h2 class="section-title">Rejoins <span class="text-gold">AKD Academy</span></h2>
+    <p class="section-desc mt-2">Remplis ce formulaire pour t'inscrire. On te recontacte sur WhatsApp pour confirmer ta place.</p>
+
+    <div class="form-card mt-3">
+      <form id="inscriptionForm" novalidate>
+        <div class="card-grid card-grid-2">
+          <div class="form-group">
+            <label for="prenom">Prénom <span style="color:var(--orange)">*</span></label>
+            <input type="text" id="prenom" name="prenom" placeholder="Ton prénom" required autocomplete="given-name"/>
+          </div>
+          <div class="form-group">
+            <label for="nom">Nom <span style="color:var(--orange)">*</span></label>
+            <input type="text" id="nom" name="nom" placeholder="Ton nom de famille" required autocomplete="family-name"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="age">Âge <span style="color:var(--orange)">*</span></label>
+          <input type="number" id="age" name="age" placeholder="Ton âge" min="4" max="60" required/>
+        </div>
+
+        <div class="form-group">
+          <label for="whatsapp">Numéro WhatsApp <span style="color:var(--orange)">*</span></label>
+          <input type="tel" id="whatsapp" name="whatsapp" placeholder="+237 6XX XXX XXX" required autocomplete="tel"/>
+        </div>
+
+        <div class="form-group">
+          <label for="niveau">Niveau actuel</label>
+          <select id="niveau" name="niveau">
+            <option value="">— Choisir un niveau —</option>
+            <option value="debutant">Débutant (jamais dansé)</option>
+            <option value="intermediaire">Intermédiaire (quelques notions)</option>
+            <option value="avance">Avancé (expérience confirmée)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message (optionnel)</label>
+          <textarea id="message" name="message" placeholder="Une question, une précision… dis-nous tout !"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-gold btn-full" id="submitBtn">
+          Envoyer mon inscription ✨
+        </button>
+
+        <p style="font-size:0.78rem; color:var(--grey-text); text-align:center; margin-top:0.8rem;">
+          Tes informations sont utilisées uniquement pour te contacter concernant ton inscription.
+        </p>
+      </form>
+    </div>
+
+    <div style="text-align:center; margin-top:2rem;">
+      <p style="font-size:0.88rem; color:var(--purple-pale); margin-bottom:0.8rem;">Tu préfères nous écrire directement ?</p>
+      <a href="https://wa.me/237657114088?text=Bonjour%20!%20Je%20voudrais%20m'inscrire%20aux%20cours%20de%20danse%20AKD%20Academy." class="btn btn-whatsapp" target="_blank" rel="noopener">
+        💬 S'inscrire via WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <img src="logo.svg" alt="I'DART" class="footer-logo"/>
+  <nav class="footer-links">
+    <a href="index.html">Accueil</a>
+    <a href="danse.html">Danse AKD</a>
+    <a href="ateliers.html">Futurs Ateliers</a>
+    <a href="apropos.html">À propos</a>
+  </nav>
+  <p class="footer-legal">
+    Site édité par <strong>I'DART</strong>, entreprise de formation artistique et culturelle.<br/>
+    Galleries de Bonamoussadi, Douala, Cameroun.<br/>
+    Contact : <strong>+237 657 114 088</strong> · <strong>roxyann783@gmail.com</strong>
+  </p>
+  <p class="footer-copy">© 2025 I'DART / AKD Academy. Tous droits réservés.</p>
+</footer>
+
+<button class="scroll-top" id="scrollTop" aria-label="Revenir en haut">↑</button>
+<div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+<!-- Mobile float bar -->
+<div class="float-bar">
+  <a href="#inscription" class="float-bar-book">✍️ S'inscrire</a>
+  <a href="https://wa.me/237657114088?text=Bonjour%20!%20Je%20veux%20m'inscrire%20aux%20cours%20de%20danse%20AKD." class="float-bar-whatsapp" target="_blank" rel="noopener">💬 WhatsApp</a>
+</div>
+
+<script>
+  // --- Navbar scroll ---
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+
+  // --- Menu mobile ---
+  const toggle = document.getElementById('hamburger');
+  const menu   = document.getElementById('mobileNav');
+  toggle.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+  });
+  function closeMobileNav() {
+    menu.classList.remove('open');
+    toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+
+  // --- Scroll to top ---
+  const scrollBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => scrollBtn.classList.toggle('visible', window.scrollY > 400), { passive: true });
+  scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // --- Scroll reveal ---
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  // --- Toast ---
+  function showToast(msg, success = true) {
+    const t = document.getElementById('toast');
+    t.innerHTML = (success ? '✅ ' : '❌ ') + msg;
+    t.style.background = success
+      ? 'linear-gradient(135deg,#4C1D95,#7C3AED)'
+      : 'linear-gradient(135deg,#7F1D1D,#DC2626)';
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 4000);
+  }
+
+  // --- Formulaire ---
+  const GOOGLE_SCRIPT_URL = 'VOTRE_URL_GOOGLE_APPS_SCRIPT_ICI';
+
+  document.getElementById('inscriptionForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn  = document.getElementById('submitBtn');
+    const form = e.target;
+
+    const prenom   = form.prenom.value.trim();
+    const nom      = form.nom.value.trim();
+    const age      = form.age.value.trim();
+    const whatsapp = form.whatsapp.value.trim();
+
+    if (!prenom || !nom || !age || !whatsapp) {
+      showToast('Remplis tous les champs obligatoires.', false);
+      return;
+    }
+
+    btn.textContent = 'Envoi en cours…';
+    btn.disabled = true;
+
+    const data = {
+      type:     'inscription_danse',
+      prenom, nom, age, whatsapp,
+      niveau:   form.niveau.value,
+      message:  form.message.value.trim(),
+      date:     new Date().toLocaleString('fr-FR')
+    };
+
+    try {
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST', mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      showToast('Inscription envoyée ! On te contacte bientôt sur WhatsApp. 🎉');
+      form.reset();
+    } catch(err) {
+      const msg = encodeURIComponent(`Bonjour AKD Academy ! Je veux m'inscrire.\nNom: ${prenom} ${nom}\nÂge: ${age}\nWhatsApp: ${whatsapp}`);
+      window.open(`https://wa.me/237657114088?text=${msg}`, '_blank');
+      showToast('Redirigé vers WhatsApp comme solution de secours.');
+      form.reset();
+    } finally {
+      btn.textContent = 'Envoyer mon inscription ✨';
+      btn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>

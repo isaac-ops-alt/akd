@@ -1,0 +1,100 @@
+==================================================
+  GUIDE DE DÉPLOIEMENT — Site I'DART / AKD Academy
+==================================================
+
+FICHIERS DU SITE
+-----------------
+idart-academy/
+├── index.html          ← Page Accueil
+├── danse.html          ← Page AKD Danse (cours, tarifs, inscription)
+├── ateliers.html       ← Page Futurs Ateliers (pré-inscription)
+├── apropos.html        ← Page À propos & Contact
+├── style.css           ← Tous les styles (NE PAS MODIFIER)
+├── logo.svg            ← Logo I'DART
+├── google-apps-script.js ← Script à coller dans Google Apps Script
+└── GUIDE-DEPLOIEMENT.txt ← Ce fichier
+
+
+═══════════════════════════════════════════════════
+ÉTAPE 1 — METTRE EN PLACE LA BASE DE DONNÉES
+═══════════════════════════════════════════════════
+
+1. Va sur https://sheets.google.com
+   → Crée un nouveau fichier, nomme-le "Contacts I'DART"
+   → Copie l'ID dans l'URL :
+      https://docs.google.com/spreadsheets/d/ [TON_ID] /edit
+
+2. Menu → Extensions → Apps Script
+   → Efface tout le code existant
+   → Colle le contenu de "google-apps-script.js"
+   → Remplace 'TON_SPREADSHEET_ID_ICI' par ton ID copié à l'étape 1
+
+3. Clique sur "Déployer" → "Nouveau déploiement"
+   → Type d'application : Application Web
+   → Exécuter en tant que : Moi
+   → Qui a accès : Tout le monde (anonyme)
+   → Clique "Déployer" → Autorise les accès
+   → COPIE l'URL du déploiement (garde-la précieusement !)
+
+4. Dans danse.html ET ateliers.html, cherche :
+      const GOOGLE_SCRIPT_URL = 'VOTRE_URL_GOOGLE_APPS_SCRIPT_ICI';
+   et remplace par :
+      const GOOGLE_SCRIPT_URL = 'COLLE_TON_URL_ICI';
+
+
+═══════════════════════════════════════════════════
+ÉTAPE 2 — METTRE LE SITE EN LIGNE
+═══════════════════════════════════════════════════
+
+OPTION A — Hébergement GRATUIT (recommandé pour démarrer)
+
+  → Netlify Drop (le plus simple) :
+    1. Va sur https://app.netlify.com/drop
+    2. Glisse-dépose le dossier "idart-academy" entier
+    3. Ton site est en ligne en 30 secondes !
+    4. Tu peux personnaliser l'URL (ex: akd-academy.netlify.app)
+
+  → GitHub Pages (gratuit, stable) :
+    1. Crée un compte sur https://github.com
+    2. Nouveau dépôt → Mets en ligne les fichiers
+    3. Settings → Pages → Activer
+
+OPTION B — Domaine personnalisé (recommandé plus tard)
+
+  Idée de domaine : akdacademy.cm ou idart.cm
+  Registrars pour le Cameroun : camtel.cm, cameroon.cm
+  Hébergement : Netlify, Vercel, ou hébergeur local
+
+
+═══════════════════════════════════════════════════
+ÉTAPE 3 — RÉCUPÉRER TES CONTACTS
+═══════════════════════════════════════════════════
+
+→ Va sur ton Google Sheet "Contacts I'DART"
+→ Tu verras 2 onglets :
+   - "Inscriptions Danse"      : nom, âge, WhatsApp, niveau
+   - "Pré-inscriptions Ateliers" : nom, WhatsApp, ateliers désirés
+
+→ Pour exporter : Fichier → Télécharger → Excel ou CSV
+
+
+═══════════════════════════════════════════════════
+MISE À JOUR DU CONTENU
+═══════════════════════════════════════════════════
+
+→ Modifier les horaires : ouvre danse.html, cherche "10h00"
+→ Modifier les tarifs : ouvre danse.html, cherche "5 000"
+→ Modifier le numéro WhatsApp : cherche "657114088" dans tous les fichiers
+→ Ajouter une photo : remplace les orbes colorés par une vraie image
+   en ajoutant dans le hero :
+     <img src="ta-photo.jpg" style="..." />
+
+
+═══════════════════════════════════════════════════
+SUPPORT
+═══════════════════════════════════════════════════
+
+Site conçu pour I'DART / AKD Academy — Douala, Cameroun
+Contact fondatrice : roxyann783@gmail.com · +237 657 114 088
+"De passion à ascension, avec I'DART"
+==================================================

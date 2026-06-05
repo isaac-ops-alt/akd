@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="À propos d'I'DART et AKD Academy — Histoire, vision de la fondatrice, contact et localisation à Douala, Cameroun."/>
+  <title>À propos &amp; Contact — I'DART | AKD Academy</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" type="image/svg+xml" href="logo.svg"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+<canvas id="sparkle-canvas" style="position:fixed;inset:0;pointer-events:none;z-index:9998;" aria-hidden="true"></canvas>
+
+<!-- ===== NAVIGATION ===== -->
+<nav id="nav" role="navigation" aria-label="Navigation principale">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="logo.svg" alt="I'DART" height="36"/></a>
+    <div class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="danse.html">Danse AKD</a>
+      <a href="galerie.html">Galerie</a>
+      <a href="ateliers.html">Futurs Ateliers</a>
+      <a href="apropos.html" class="active">À propos</a>
+    </div>
+    <div class="nav-actions"><a href="danse.html#inscription" class="btn btn-gold btn-sm">S'inscrire</a></div>
+    <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileNav()">Accueil</a>
+    <a href="danse.html" onclick="closeMobileNav()">Danse AKD</a>
+    <a href="galerie.html" onclick="closeMobileNav()">Galerie</a>
+    <a href="ateliers.html" onclick="closeMobileNav()">Futurs Ateliers</a>
+    <a href="apropos.html" onclick="closeMobileNav()">À propos</a>
+    <a href="danse.html#inscription" class="btn btn-gold" onclick="closeMobileNav()">S'inscrire</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" style="min-height:50svh;" aria-label="À propos I'DART">
+  <div class="hero-bg">
+    <div class="orb orb-1" style="background:#4C1D95;"></div>
+    <div class="orb orb-2" style="background:#F59E0B; opacity:0.3;"></div>
+    <div class="hero-bg-gradient"></div>
+  </div>
+  <div class="hero-content container">
+    <span class="hero-badge">✨ Notre histoire</span>
+    <h1 class="hero-title">De passion<br/>à <span class="accent">ascension</span></h1>
+    <p class="hero-sub">L'histoire d'une vision née en 2021 qui grandit chaque jour à Douala.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-gold">Nous contacter</a>
+      <a href="danse.html" class="btn btn-outline">Voir la danse →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HISTOIRE ===== -->
+<section class="section">
+  <div class="container reveal">
+    <span class="section-label">Notre parcours</span>
+    <h2 class="section-title">Une histoire<br/>de <span class="text-gold">passion</span></h2>
+    <p class="section-desc mt-2">
+      Tout a commencé avec une conviction : l'art a le pouvoir de transformer des vies. Depuis 2021, AKD Academy prouve que cette conviction est juste, un élève à la fois.
+    </p>
+
+    <div class="timeline">
+      <div class="timeline-item reveal reveal-d1">
+        <div class="timeline-dot"></div>
+        <p class="timeline-year">2021 — Les débuts</p>
+        <p class="timeline-text">
+          Naissance d'AKD Academy à Douala. Les premiers cours de danse démarrent avec une poignée d'élèves passionnés et une fondatrice déterminée à créer quelque chose de grand.
+        </p>
+      </div>
+      <div class="timeline-item reveal reveal-d1">
+        <div class="timeline-dot"></div>
+        <p class="timeline-year">2022 – 2023 — La croissance</p>
+        <p class="timeline-text">
+          La famille AKD s'agrandit. De nouvelles têtes, de nouvelles danses, de nouveaux défis. Les premiers showcases voient le jour et confirment le potentiel des élèves.
+        </p>
+      </div>
+      <div class="timeline-item reveal reveal-d1">
+        <div class="timeline-dot"></div>
+        <p class="timeline-year">2024 — La vision s'élargit</p>
+        <p class="timeline-text">
+          Après avoir constaté l'impact de la danse sur des dizaines de jeunes, la fondatrice imagine un projet plus vaste : I'DART, un centre artistique pluridisciplinaire.
+        </p>
+      </div>
+      <div class="timeline-item reveal reveal-d1">
+        <div class="timeline-dot"></div>
+        <p class="timeline-year">2025 — I'DART prend forme</p>
+        <p class="timeline-text">
+          Création officielle de l'entreprise I'DART. Le site web est lancé. Les futurs ateliers (arts visuels, musique, taekwondo) sont en préparation active. L'empire créatif se construit.
+        </p>
+      </div>
+      <div class="timeline-item reveal reveal-d1">
+        <div class="timeline-dot" style="background:var(--purple-light); box-shadow:0 0 12px rgba(124,58,237,0.6);"></div>
+        <p class="timeline-year">Demain — L'avenir</p>
+        <p class="timeline-text">
+          Un centre complet, des dizaines d'élèves, des disciplines artistiques multiples. I'DART vise à devenir la référence de la formation artistique à Douala et au Cameroun.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- ===== FONDATRICE ===== -->
+<section class="section section-light">
+  <div class="container reveal">
+    <span class="section-label">La fondatrice</span>
+    <h2 class="section-title">Eyenga <span class="text-gold">Ngo'o R.</span></h2>
+
+    <div class="card mt-3" style="background:linear-gradient(135deg,rgba(76,29,149,0.3),rgba(124,58,237,0.1)); border-color:rgba(124,58,237,0.4);">
+      <div class="founder-inner">
+        <div class="founder-avatar">👩‍🎨</div>
+        <div>
+          <h3 style="color:var(--white); font-size:1.2rem; margin-bottom:0.3rem;">Fondatrice &amp; Directrice</h3>
+          <p style="font-size:0.8rem; color:var(--gold); letter-spacing:1px; margin-bottom:0.8rem;">AKD ACADEMY · I'DART</p>
+          <p style="font-size:0.9rem; color:var(--purple-pale); line-height:1.75;">
+            Promotrice de l'académie de danse AKD depuis 2021, Eyenga Ngo'o R. a consacré ces dernières années à former les jeunes talents de Douala. Témoin direct du pouvoir transformateur de l'art, elle a imaginé I'DART comme un espace où chaque enfant et chaque jeune peut trouver sa discipline, son expression, sa voie.
+          </p>
+          <p style="font-size:0.9rem; color:var(--purple-pale); line-height:1.75; margin-top:0.8rem;">
+            Sa conviction : <em style="color:var(--white);">"Bien plus qu'une vision, nous sommes un empire créatif qui façonne l'élite artistique de demain."</em>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Valeurs -->
+    <div class="card-grid card-grid-3 mt-3">
+      <div class="card text-center reveal reveal-d1">
+        <div class="card-icon">🔥</div>
+        <h3 style="font-size:0.95rem; color:var(--white);">Passion</h3>
+        <p style="font-size:0.82rem; color:var(--purple-pale);" class="mt-1">L'art enseigné avec le cœur, par des formateurs qui vivent ce qu'ils transmettent.</p>
+      </div>
+      <div class="card text-center reveal reveal-d2">
+        <div class="card-icon">🎯</div>
+        <h3 style="font-size:0.95rem; color:var(--white);">Excellence</h3>
+        <p style="font-size:0.82rem; color:var(--purple-pale);" class="mt-1">Des standards professionnels accessibles à tous, pour que chaque élève donne le meilleur.</p>
+      </div>
+      <div class="card text-center reveal reveal-d3">
+        <div class="card-icon">🌱</div>
+        <h3 style="font-size:0.95rem; color:var(--white);">Épanouissement</h3>
+        <p style="font-size:0.82rem; color:var(--purple-pale);" class="mt-1">Un cadre bienveillant où grandir, se tromper, recommencer et s'élever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- ===== CONTACT ===== -->
+<section class="section" id="contact">
+  <div class="container reveal">
+    <span class="section-label">Nous trouver</span>
+    <h2 class="section-title">Contact &amp;<br/><span class="text-gold">Localisation</span></h2>
+    <p class="section-desc mt-2">On est là pour répondre à toutes tes questions. WhatsApp est le moyen le plus rapide pour nous joindre.</p>
+
+    <div class="card mt-3" style="padding:0.5rem 0;">
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <p class="contact-label">Adresse</p>
+          <p class="contact-value">Galleries de Bonamoussadi, Douala, Cameroun</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📱</div>
+        <div>
+          <p class="contact-label">WhatsApp &amp; Téléphone</p>
+          <a href="tel:+237657114088" class="contact-value" style="color:var(--white);">+237 657 114 088</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📧</div>
+        <div>
+          <p class="contact-label">Email</p>
+          <a href="mailto:roxyann783@gmail.com" class="contact-value" style="color:var(--white);">roxyann783@gmail.com</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🕐</div>
+        <div>
+          <p class="contact-label">Horaires des cours</p>
+          <p class="contact-value">Lun / Mer / Ven · 10h00 – 13h00</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex; flex-direction:column; gap:0.8rem; margin-top:2rem;">
+      <a href="https://wa.me/237657114088?text=Bonjour%20I'DART%20!%20J'ai%20une%20question." class="btn btn-whatsapp" target="_blank" rel="noopener">
+        💬 Nous écrire sur WhatsApp
+      </a>
+      <a href="mailto:roxyann783@gmail.com" class="btn btn-outline">
+        📧 Envoyer un email
+      </a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- ===== MISSION ===== -->
+<section class="section section-light" style="padding:3rem 1.2rem;">
+  <div class="container text-center reveal">
+    <div style="max-width:560px; margin:0 auto;">
+      <p style="font-size:0.8rem; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:1rem;">Notre mission</p>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(1.3rem,4vw,2rem); color:var(--white); line-height:1.4; font-style:italic;">
+        "Offrir un espace créatif et inclusif où les enfants et les jeunes peuvent s'exprimer, apprendre et grandir ensemble."
+      </p>
+      <p style="color:var(--purple-pale); margin-top:1.2rem; font-size:0.88rem;">— Eyenga Ngo'o R., Fondatrice d'I'DART</p>
+      <a href="danse.html#inscription" class="btn btn-gold" style="margin-top:2rem; display:inline-flex;">Rejoindre l'académie →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <img src="logo.svg" alt="I'DART" class="footer-logo"/>
+  <nav class="footer-links">
+    <a href="index.html">Accueil</a>
+    <a href="danse.html">Danse AKD</a>
+    <a href="ateliers.html">Futurs Ateliers</a>
+    <a href="apropos.html">À propos</a>
+  </nav>
+  <p class="footer-legal">
+    Site édité par <strong>I'DART</strong>, entreprise de formation artistique et culturelle.<br/>
+    Galleries de Bonamoussadi, Douala, Cameroun.<br/>
+    Contact : <strong>+237 657 114 088</strong> · <strong>roxyann783@gmail.com</strong>
+  </p>
+  <p class="footer-copy">© 2025 I'DART / AKD Academy. Tous droits réservés. · <em>"De passion à ascension"</em></p>
+</footer>
+
+<button class="scroll-top" id="scrollTop" aria-label="Revenir en haut">↑</button>
+
+<!-- Mobile float bar -->
+<div class="float-bar">
+  <a href="danse.html#inscription" class="float-bar-book">✍️ S'inscrire</a>
+  <a href="https://wa.me/237657114088?text=Bonjour%20I'DART%20!%20J'ai%20une%20question." class="float-bar-whatsapp" target="_blank" rel="noopener">💬 WhatsApp</a>
+</div>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+
+  const toggle = document.getElementById('hamburger');
+  const menu   = document.getElementById('mobileNav');
+  toggle.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+  });
+  function closeMobileNav() {
+    menu.classList.remove('open');
+    toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+
+  const scrollBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => scrollBtn.classList.toggle('visible', window.scrollY > 400), { passive: true });
+  scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Scroll reveal
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+</script>
+</body>
+</html>

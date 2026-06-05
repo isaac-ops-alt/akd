@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Galerie AKD Academy — Photos et vidéos des cours de danse, performances et showcases. Bonamoussadi, Douala, Cameroun."/>
+  <title>Galerie — AKD Academy | I'DART</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" type="image/svg+xml" href="logo.svg"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    /* ── Page galerie spécifique ── */
+    .gallery-count {
+      font-size: 11px; letter-spacing: 2px; color: var(--grey);
+      text-transform: uppercase; margin-left: auto; padding: 8px 0;
+    }
+    .gallery-toolbar {
+      display: flex; align-items: center;
+      gap: 16px; margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+    /* Lightbox caption */
+    .lightbox-caption {
+      position: absolute; bottom: 60px; left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1rem; color: rgba(255,255,255,0.6);
+      white-space: nowrap;
+    }
+    /* Video modal */
+    .vid-modal {
+      position: fixed; inset: 0;
+      background: rgba(8,4,18,0.98);
+      z-index: 10000; display: none;
+      align-items: center; justify-content: center;
+      padding: 20px;
+    }
+    .vid-modal.open { display: flex; }
+    .vid-modal-inner {
+      position: relative;
+      width: 100%; max-width: 880px;
+    }
+    .vid-modal video, .vid-modal iframe {
+      width: 100%; aspect-ratio: 16/9;
+      border-radius: var(--r2);
+      box-shadow: var(--shadow-deep);
+      background: var(--bg-deep);
+    }
+    .vid-modal-close {
+      position: absolute; top: -52px; right: 0;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white); font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .vid-modal-close:hover { background: rgba(255,255,255,0.2); }
+    /* CTA bottom strip */
+    .gallery-cta {
+      background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+      border-radius: var(--r3); padding: 56px 44px;
+      text-align: center; margin-top: 72px;
+      position: relative; overflow: hidden;
+    }
+    .gallery-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .gallery-cta h2 { color: var(--white); margin-bottom: 14px; position: relative; z-index: 1; }
+    .gallery-cta p  { color: rgba(255,255,255,0.75); margin-bottom: 28px; position: relative; z-index: 1; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .gallery-cta .btns { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; position: relative; z-index: 1; }
+    /* Upload hint card */
+    .upload-hint {
+      background: rgba(245,200,66,0.06);
+      border: 1px dashed var(--border-gold);
+      border-radius: var(--r2); padding: 32px;
+      text-align: center; grid-column: span 2;
+    }
+    .upload-hint p { font-size: 0.85rem; color: var(--grey); }
+    .upload-hint strong { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+<canvas id="sparkle-canvas" style="position:fixed;inset:0;pointer-events:none;z-index:9998;" aria-hidden="true"></canvas>
+
+<!-- ══════════════════════════ NAV ══════════════════════════════ -->
+<nav id="nav" role="navigation" aria-label="Navigation principale">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.svg" alt="I'DART" height="36"/>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="danse.html">Danse AKD</a>
+      <a href="galerie.html" class="active">Galerie</a>
+      <a href="ateliers.html">Futurs Ateliers</a>
+      <a href="apropos.html">À propos</a>
+    </div>
+    <div class="nav-actions">
+      <a href="danse.html#inscription" class="btn btn-gold btn-sm">S'inscrire</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileNav()">Accueil</a>
+    <a href="danse.html" onclick="closeMobileNav()">Danse AKD</a>
+    <a href="galerie.html" onclick="closeMobileNav()">Galerie</a>
+    <a href="ateliers.html" onclick="closeMobileNav()">Futurs Ateliers</a>
+    <a href="apropos.html" onclick="closeMobileNav()">À propos</a>
+    <a href="danse.html#inscription" class="btn btn-gold" onclick="closeMobileNav()">S'inscrire</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════ PAGE HERO ═════════════════════════════ -->
+<section class="page-hero" aria-label="Galerie AKD Academy">
+  <div class="hero-orbs" aria-hidden="true">
+    <div class="orb orb-1" style="background:var(--gold-dark); opacity:0.2;"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+  <div class="hero-overlay" style="background:linear-gradient(to top,var(--bg-deep) 0%,rgba(8,4,18,0.6) 60%,transparent 100%);"></div>
+  <div class="page-hero-content">
+    <div class="section-label reveal" style="margin-bottom:12px;">Nos moments</div>
+    <h1 class="reveal" style="font-size:clamp(2.4rem,7vw,4.5rem);">
+      Galerie <em>AKD Academy</em>
+    </h1>
+    <p class="lede reveal reveal-d1" style="margin-top:14px; max-width:520px;">
+      Photos et vidéos de nos cours, performances et showcases. Vois ce qui se passe chaque semaine aux Galleries de Bonamoussadi.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════ GALERIE PRINCIPALE ════════════════════ -->
+<section class="section" style="padding-top:64px;" aria-label="Galerie photos et vidéos">
+  <div class="wrap">
+
+    <!-- Filtres -->
+    <div class="gallery-toolbar reveal">
+      <div class="gallery-filters">
+        <button class="filter-btn active" data-filter="all">Tout voir</button>
+        <button class="filter-btn" data-filter="cours">Cours de danse</button>
+        <button class="filter-btn" data-filter="performance">Performances</button>
+        <button class="filter-btn" data-filter="showcase">Showcases</button>
+        <button class="filter-btn" data-filter="video">Vidéos</button>
+      </div>
+      <div class="gallery-count" id="galleryCount">— photos &amp; vidéos</div>
+    </div>
+
+    <!-- ═════════════════════════════════════════════════════════
+         GRILLE PHOTOS
+         🖼️ INSTRUCTIONS :
+         - Glisse tes photos dans le dossier img/galerie/
+         - Renomme-les : akd-01.jpg, akd-02.jpg, etc.
+         - Remplis les src="" avec le bon nom de fichier
+         - Adapte data-category : "cours", "performance", "showcase"
+         - Les classes "tall" et "wide" changent la taille dans la grille
+    ═════════════════════════════════════════════════════════ -->
+    <div class="gallery-main-grid" id="galleryGrid">
+
+      <!-- Photo 01 — tall = grande verticale -->
+      <div class="gallery-item tall reveal reveal-d1" data-category="cours" data-index="0">
+        <img src="img/galerie/akd-01.jpg" alt="Cours de danse AKD Academy" loading="lazy"
+             onerror="this.parentElement.style.background='linear-gradient(145deg,#4C1D95,#7C3AED)';this.style.display='none'"/>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <div class="gallery-overlay-text">Cours de danse</div>
+        </div>
+      </div>
+
+      <!-- Photo 02 -->
+      <div class="gallery-item reveal reveal-d2" data-category="cours" data-index="1">
+        <img src="img/galerie/akd-02.jpg" alt="Élèves AKD en cours" loading="lazy"
+             onerror="this.parentElement.style.background='linear-gradient(145deg,#D4860A,#F5C842)';this.style.display='none'"/>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <div class="gallery-overlay-text">Séance du lundi</div>
+        </div>
+      </div>
+
+      <!-- Photo 03 -->
+      <div class="gallery-item reveal reveal-d3" data-category="performance" data-index="2">
+        <img src="img/galerie/akd-03.jpg" alt="Performance AKD" loading="lazy"
+             onerror="this.parentElement.style.background='linear-gradient(145deg,#1A0A3B,#4C1D95)';this.style.display='none'"/>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <div class="gallery-overlay-text">Performance</div>
+        </div>
+      </div>
+
+      <!-- Photo 04 — wide = grande horizontale -->
+      <div class="gallery-item wide reveal reveal-d4" data-category="showcase" data-index="3">
+        <img src="img/galerie/akd-04.jpg" alt="Showcase AKD Academy" loading="lazy"
+             onerror="this.parentElement.style.background='linear-gradient(145deg,#4C1D95,#EA580C)';this.style.display='none'"/>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <div class="gallery-overlay-text">Showcase</div>
+        </div>
+      </div>
+
+      <!-- Photo 05 -->
+      <div class="gallery-item reveal reveal-d1" data-category="cours" data-index="4">
+        <img src="img/galerie/akd-05.jpg" alt="Formation danse Douala" loading="lazy"
+             onerror="this.parentElement.style.background='linear-gradient(145deg,#7C3AED,#D4860A)';this.style.display='none'"/>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <div class="gallery-overlay-text">Cours mercredi</div>
+        </div>
+      </div>
+
+      <!-- Photo 06 — tall -->
+      <div class="gallery-item tall reveal reveal-d2" data-category="performance" data-index="5">
+        <img src="img/galerie/akd-06.jpg" alt="Danse AKD" loading="lazy"
+             onerror="this.parentElement.style.background='linear-gradient(145deg,#EA580C,#7C3AED)';this.style.display='none'"/>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <div class="gallery-overlay-text">Expression artistique</div>
+        </div>
+      </div>
+
+      <!-- Photo 07 -->
+      <div class="gallery-item reveal reveal-d3" data-category="cours" data-index="6">
+        <img src="img/galerie/akd-07.jpg" alt="Académie AKD" loading="lazy"
+             onerror="this.parentElement.style.background='linear-gradient(145deg,#0D0820,#4C1D95)';this.style.display='none'"/>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <div class="gallery-overlay-text">Cours vendredi</div>
+        </div>
+      </div>
+
+      <!-- Photo 08 -->
+      <div class="gallery-item reveal reveal-d4" data-category="showcase" data-index="7">
+        <img src="img/galerie/akd-08.jpg" alt="Showcase AKD" loading="lazy"
+             onerror="this.parentElement.style.background='linear-gradient(145deg,#D4860A,#4C1D95)';this.style.display='none'"/>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <div class="gallery-overlay-text">Show de fin d'année</div>
+        </div>
+      </div>
+
+      <!-- Photo 09 -->
+      <div class="gallery-item reveal reveal-d1" data-category="performance" data-index="8">
+        <img src="img/galerie/akd-09.jpg" alt="Performance danse Cameroun" loading="lazy"
+             onerror="this.parentElement.style.background='linear-gradient(145deg,#7C3AED,#1A0A3B)';this.style.display='none'"/>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <div class="gallery-overlay-text">Scène</div>
+        </div>
+      </div>
+
+      <!-- Photo 10 — wide -->
+      <div class="gallery-item wide reveal reveal-d2" data-category="cours" data-index="9">
+        <img src="img/galerie/akd-10.jpg" alt="Groupe AKD Academy" loading="lazy"
+             onerror="this.parentElement.style.background='linear-gradient(145deg,#F5C842,#7C3AED)';this.style.display='none'"/>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <div class="gallery-overlay-text">La famille AKD</div>
+        </div>
+      </div>
+
+      <!-- Photo 11 -->
+      <div class="gallery-item reveal reveal-d3" data-category="showcase" data-index="10">
+        <img src="img/galerie/akd-11.jpg" alt="Showcase Bonamoussadi" loading="lazy"
+             onerror="this.parentElement.style.background='linear-gradient(145deg,#4C1D95,#EA580C)';this.style.display='none'"/>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <div class="gallery-overlay-text">Showcase</div>
+        </div>
+      </div>
+
+      <!-- Photo 12 -->
+      <div class="gallery-item reveal reveal-d4" data-category="performance" data-index="11">
+        <img src="img/galerie/akd-12.jpg" alt="Danse performance" loading="lazy"
+             onerror="this.parentElement.style.background='linear-gradient(145deg,#1A0A3B,#D4860A)';this.style.display='none'"/>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <div class="gallery-overlay-text">Mouvement</div>
+        </div>
+      </div>
+
+      <!-- ─── VIDÉOS dans la grille ─────────────────────── -->
+      <!-- 🎬 Vidéo 01 : remplace src par le vrai chemin video/akd-vid-01.mp4 -->
+      <div class="gallery-item video-item reveal reveal-d1" data-category="video" data-video="video/akd-vid-01.mp4">
+        <!-- La vidéo sera jouée dans le modal en cliquant -->
+        <img src="img/galerie/thumb-vid-01.jpg" alt="Vidéo cours de danse" class="vid-thumb" loading="lazy"
+             onerror="this.parentElement.style.background='linear-gradient(145deg,#0D0820,#7C3AED)';this.style.display='none'"/>
+        <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+        <span class="video-play-badge"><i class="fa-solid fa-play"></i> Vidéo</span>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-text">Cours de danse — Replay</div>
+        </div>
+      </div>
+
+      <!-- 🎬 Vidéo 02 -->
+      <div class="gallery-item video-item wide reveal reveal-d2" data-category="video" data-video="video/akd-vid-02.mp4">
+        <img src="img/galerie/thumb-vid-02.jpg" alt="Vidéo showcase AKD" class="vid-thumb" loading="lazy"
+             onerror="this.parentElement.style.background='linear-gradient(145deg,#4C1D95,#F5C842)';this.style.display='none'"/>
+        <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+        <span class="video-play-badge"><i class="fa-solid fa-play"></i> Vidéo</span>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-text">Showcase — Performance complète</div>
+        </div>
+      </div>
+
+      <!-- 🎬 Vidéo 03 -->
+      <div class="gallery-item video-item reveal reveal-d3" data-category="video" data-video="video/akd-vid-03.mp4">
+        <img src="img/galerie/thumb-vid-03.jpg" alt="Vidéo AKD" class="vid-thumb" loading="lazy"
+             onerror="this.parentElement.style.background='linear-gradient(145deg,#D4860A,#1A0A3B)';this.style.display='none'"/>
+        <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+        <span class="video-play-badge"><i class="fa-solid fa-play"></i> Vidéo</span>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-text">Ambiance AKD</div>
+        </div>
+      </div>
+
+      <!-- Photo 13 -->
+      <div class="gallery-item reveal reveal-d4" data-category="cours" data-index="12">
+        <img src="img/galerie/akd-13.jpg" alt="Cours AKD Douala" loading="lazy"
+             onerror="this.parentElement.style.background='linear-gradient(145deg,#7C3AED,#F5C842)';this.style.display='none'"/>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <div class="gallery-overlay-text">En cours</div>
+        </div>
+      </div>
+
+      <!-- Photo 14 -->
+      <div class="gallery-item reveal reveal-d1" data-category="showcase" data-index="13">
+        <img src="img/galerie/akd-14.jpg" alt="Event AKD" loading="lazy"
+             onerror="this.parentElement.style.background='linear-gradient(145deg,#4C1D95,#EA580C)';this.style.display='none'"/>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <div class="gallery-overlay-text">Événement</div>
+        </div>
+      </div>
+
+      <!-- Photo 15 -->
+      <div class="gallery-item tall reveal reveal-d2" data-category="performance" data-index="14">
+        <img src="img/galerie/akd-15.jpg" alt="Art de la danse" loading="lazy"
+             onerror="this.parentElement.style.background='linear-gradient(145deg,#1A0A3B,#7C3AED)';this.style.display='none'"/>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          <div class="gallery-overlay-text">Élégance</div>
+        </div>
+      </div>
+
+    </div><!-- /gallery-main-grid -->
+
+    <!-- Note d'ajout de photos -->
+    <div style="margin-top:20px; background:rgba(245,200,66,0.06); border:1px dashed var(--border-gold); border-radius:var(--r2); padding:28px; text-align:center;">
+      <p style="font-size:0.85rem; color:var(--grey);">
+        💡 <strong style="color:var(--gold);">Ajouter tes photos :</strong> Glisse tes images dans le dossier <code style="background:rgba(255,255,255,0.08); padding:2px 6px; border-radius:4px;">img/galerie/</code> et nomme-les <code style="background:rgba(255,255,255,0.08); padding:2px 6px; border-radius:4px;">akd-01.jpg</code>, <code style="background:rgba(255,255,255,0.08); padding:2px 6px; border-radius:4px;">akd-02.jpg</code>, etc.<br/>
+        Pour les vidéos : dossier <code style="background:rgba(255,255,255,0.08); padding:2px 6px; border-radius:4px;">video/</code>, noms <code style="background:rgba(255,255,255,0.08); padding:2px 6px; border-radius:4px;">akd-vid-01.mp4</code>, <code style="background:rgba(255,255,255,0.08); padding:2px 6px; border-radius:4px;">akd-vid-02.mp4</code>, etc.
+      </p>
+    </div>
+
+    <!-- ══ CTA BOTTOM ══ -->
+    <div class="gallery-cta reveal">
+      <h2>Tu veux <em>rejoindre</em> l'aventure ?</h2>
+      <p>Ce que tu viens de voir, c'est ce que vivent nos élèves chaque semaine. Ta place t'attend.</p>
+      <div class="btns">
+        <a href="danse.html#inscription" class="btn btn-gold btn-lg">
+          <i class="fa-regular fa-calendar-check"></i> S'inscrire maintenant
+        </a>
+        <a href="https://wa.me/237657114088?text=Bonjour%20AKD%20Academy%20!" class="btn btn-glass btn-lg" target="_blank" rel="noopener">
+          <i class="fa-brands fa-whatsapp"></i> Poser une question
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════ FOOTER ════════════════════════════════ -->
+<footer aria-label="Pied de page">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="logo.svg" alt="I'DART" class="footer-logo"/>
+        <div class="footer-tagline">Académie de danse & arts · Douala</div>
+        <div class="footer-desc">AKD Academy, premier pôle du projet I'DART. "L'Art au cœur de la passion."</div>
+        <div class="footer-social">
+          <a href="https://wa.me/237657114088" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="mailto:roxyann783@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+          <a href="tel:+237657114088" aria-label="Téléphone"><i class="fa-solid fa-phone"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Pages</div>
+        <div class="footer-links">
+          <a href="index.html"><i class="fa-solid fa-angle-right"></i> Accueil</a>
+          <a href="danse.html"><i class="fa-solid fa-angle-right"></i> Danse AKD</a>
+          <a href="galerie.html"><i class="fa-solid fa-angle-right"></i> Galerie</a>
+          <a href="ateliers.html"><i class="fa-solid fa-angle-right"></i> Futurs Ateliers</a>
+          <a href="apropos.html"><i class="fa-solid fa-angle-right"></i> À propos</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-links">
+          <a href="tel:+237657114088"><i class="fa-solid fa-phone"></i> +237 657 114 088</a>
+          <a href="mailto:roxyann783@gmail.com"><i class="fa-solid fa-envelope"></i> roxyann783@gmail.com</a>
+          <a href="#"><i class="fa-solid fa-location-dot"></i> Galleries Bonamoussadi</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Horaires</div>
+        <div style="display:flex; flex-direction:column; gap:8px; margin-top:4px;">
+          <div style="display:flex; justify-content:space-between; font-size:13px; color:rgba(255,255,255,0.55); border-bottom:1px solid var(--border); padding-bottom:7px;">
+            <span>Lundi</span><span style="color:var(--gold);">10h–13h</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:13px; color:rgba(255,255,255,0.55); border-bottom:1px solid var(--border); padding-bottom:7px;">
+            <span>Mercredi</span><span style="color:var(--gold);">10h–13h</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:13px; color:rgba(255,255,255,0.55);">
+            <span>Vendredi</span><span style="color:var(--gold);">10h–13h</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2025 I'DART / AKD Academy · Tous droits réservés.</div>
+      <div style="opacity:0.35; font-size:10.5px;"><em>"De passion à ascension"</em></div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════ LIGHTBOX PHOTO ════════════════════════ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visionneuse d'image">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+  <button class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1)" aria-label="Précédent"><i class="fa-solid fa-chevron-left"></i></button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="Galerie AKD Academy"/>
+  <button class="lightbox-nav lightbox-next" onclick="lightboxNav(1)" aria-label="Suivant"><i class="fa-solid fa-chevron-right"></i></button>
+  <div class="lightbox-counter" id="lightboxCounter"></div>
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<!-- ══════════════════════ VIDEO MODAL ═══════════════════════════ -->
+<div class="vid-modal" id="vidModal" role="dialog" aria-modal="true">
+  <div class="vid-modal-inner">
+    <button class="vid-modal-close" onclick="closeVidModal()" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+    <video id="modalVideo" controls preload="none" style="border-radius:var(--r2);">
+      Ton navigateur ne supporte pas la lecture vidéo.
+    </video>
+  </div>
+</div>
+
+<!-- Float bar mobile -->
+<div class="float-bar" role="complementary">
+  <a href="danse.html#inscription" class="float-bar-book"><i class="fa-regular fa-calendar-check"></i> S'inscrire</a>
+  <a href="https://wa.me/237657114088?text=Bonjour%20AKD%20Academy%20!" class="float-bar-whatsapp" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+</div>
+
+<!-- ══════════════════════ JAVASCRIPT ════════════════════════════ -->
+<script>
+// ── NAVBAR ─────────────────────────────────────────────────
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+const hamburger = document.getElementById('hamburger');
+const mobileNav  = document.getElementById('mobileNav');
+hamburger.addEventListener('click', () => {
+  const open = mobileNav.classList.toggle('open');
+  hamburger.classList.toggle('open', open);
+  hamburger.setAttribute('aria-expanded', open);
+});
+function closeMobileNav() { mobileNav.classList.remove('open'); hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); }
+
+// ── SCROLL REVEAL ──────────────────────────────────────────
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+// ── GALLERY DATA ────────────────────────────────────────────
+// Collecte tous les items photo (non vidéo)
+const photoItems = [];
+document.querySelectorAll('.gallery-item:not(.video-item)').forEach((item, i) => {
+  const img = item.querySelector('img');
+  const caption = item.querySelector('.gallery-overlay-text');
+  photoItems.push({ src: img ? img.src : '', alt: img ? img.alt : '', caption: caption ? caption.textContent : '' });
+});
+
+// ── FILTRES ─────────────────────────────────────────────────
+const allItems   = document.querySelectorAll('.gallery-item');
+const countEl    = document.getElementById('galleryCount');
+const filterBtns = document.querySelectorAll('.filter-btn');
+
+function applyFilter(filter) {
+  let visible = 0;
+  allItems.forEach(item => {
+    const cat = item.dataset.category;
+    const show = filter === 'all' || cat === filter;
+    item.classList.toggle('hidden', !show);
+    if (show) visible++;
+  });
+  countEl.textContent = `${visible} éléments`;
+}
+applyFilter('all');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    applyFilter(btn.dataset.filter);
+  });
+});
+
+// ── LIGHTBOX PHOTOS ─────────────────────────────────────────
+let currentIdx = 0;
+function openLightbox(idx) {
+  currentIdx = idx;
+  const lb = document.getElementById('lightbox');
+  const img = document.getElementById('lightboxImg');
+  const cap = document.getElementById('lightboxCaption');
+  const cnt = document.getElementById('lightboxCounter');
+  img.src = photoItems[idx].src;
+  img.alt = photoItems[idx].alt;
+  cap.textContent = photoItems[idx].caption;
+  cnt.textContent = `${idx + 1} / ${photoItems.length}`;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function lightboxNav(dir) {
+  currentIdx = (currentIdx + dir + photoItems.length) % photoItems.length;
+  openLightbox(currentIdx);
+}
+document.getElementById('lightbox').addEventListener('click', function(e) { if (e.target === this) closeLightbox(); });
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft')  lightboxNav(-1);
+  if (e.key === 'ArrowRight') lightboxNav(1);
+});
+// Touch swipe lightbox
+(function() {
+  const lb = document.getElementById('lightbox');
+  let sx = 0;
+  lb.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', e => { const dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 50) lightboxNav(dx < 0 ? 1 : -1); });
+})();
+
+// ── CLICK HANDLERS ─────────────────────────────────────────
+document.querySelectorAll('.gallery-item').forEach((item, i) => {
+  item.addEventListener('click', () => {
+    if (item.classList.contains('video-item')) {
+      // Ouvrir modal vidéo
+      const src = item.dataset.video;
+      if (src) openVidModal(src);
+    } else {
+      // Ouvrir lightbox photo
+      const idx = parseInt(item.dataset.index || 0);
+      openLightbox(Math.min(idx, photoItems.length - 1));
+    }
+  });
+});
+
+// ── VIDEO MODAL ─────────────────────────────────────────────
+function openVidModal(src) {
+  const modal = document.getElementById('vidModal');
+  const vid   = document.getElementById('modalVideo');
+  vid.src = src;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  vid.play().catch(() => {});
+}
+function closeVidModal() {
+  const modal = document.getElementById('vidModal');
+  const vid   = document.getElementById('modalVideo');
+  vid.pause(); vid.src = '';
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('vidModal').addEventListener('click', function(e) { if (e.target === this) closeVidModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVidModal(); });
+
+// ── 3D TILT ─────────────────────────────────────────────────
+if (!window.matchMedia('(hover:none)').matches) {
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('mousemove', e => {
+      const r = item.getBoundingClientRect();
+      const x = ((e.clientX - r.left) / r.width  - 0.5) * 14;
+      const y = ((e.clientY - r.top)  / r.height - 0.5) * -14;
+      item.style.transform = `perspective(700px) rotateX(${y}deg) rotateY(${x}deg) scale(1.03)`;
+    });
+    item.addEventListener('mouseleave', () => { item.style.transform = ''; });
+  });
+}
+
+// ── SPARKLE CURSOR ──────────────────────────────────────────
+(function() {
+  if (window.matchMedia('(hover:none)').matches) return;
+  const canvas = document.getElementById('sparkle-canvas');
+  const ctx = canvas.getContext('2d');
+  let W = window.innerWidth, H = window.innerHeight;
+  canvas.width = W; canvas.height = H;
+  window.addEventListener('resize', () => { W=window.innerWidth; H=window.innerHeight; canvas.width=W; canvas.height=H; });
+  const COLORS = ['#F5C842','#A78BFA','#7C3AED','#FDE68A','#C4B5FD','#ffffff','#D4860A'];
+  const pts=[];
+  let mx=-200,my=-200,lx=-200,ly=-200;
+  document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
+  class Sparkle {
+    constructor(x,y) {
+      this.x=x+(Math.random()-.5)*20; this.y=y+(Math.random()-.5)*20;
+      this.r=Math.random()*3+0.8; this.color=COLORS[Math.floor(Math.random()*COLORS.length)];
+      this.life=1; this.decay=Math.random()*.032+.016;
+      this.vx=(Math.random()-.5)*1.8; this.vy=(Math.random()-.5)*1.8-.5;
+      this.rot=Math.random()*Math.PI*2; this.rotV=(Math.random()-.5)*.2;
+    }
+    tick(){this.x+=this.vx;this.y+=this.vy;this.vy+=.045;this.life-=this.decay;this.rot+=this.rotV;this.r*=.985;}
+    draw(){
+      ctx.save();ctx.translate(this.x,this.y);ctx.rotate(this.rot);
+      ctx.globalAlpha=Math.max(0,this.life*.88);ctx.fillStyle=this.color;
+      const s=this.r;
+      ctx.beginPath();
+      ctx.moveTo(0,-s);ctx.lineTo(s*.28,-s*.28);ctx.lineTo(s,0);ctx.lineTo(s*.28,s*.28);
+      ctx.lineTo(0,s);ctx.lineTo(-s*.28,s*.28);ctx.lineTo(-s,0);ctx.lineTo(-s*.28,-s*.28);
+      ctx.closePath();ctx.fill();ctx.restore();
+    }
+  }
+  (function loop(){
+    ctx.clearRect(0,0,W,H);
+    const d=Math.hypot(mx-lx,my-ly);
+    if(d>4){const c=Math.min(Math.floor(d/4),5);for(let i=0;i<c;i++)pts.push(new Sparkle(mx,my));lx=mx;ly=my;}
+    for(let i=pts.length-1;i>=0;i--){pts[i].tick();pts[i].draw();if(pts[i].life<=0)pts.splice(i,1);}
+    requestAnimationFrame(loop);
+  })();
+})();
+</script>
+</body>
+</html>

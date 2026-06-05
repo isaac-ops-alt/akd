@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Futurs ateliers I'DART Douala — Arts visuels, Taekwondo, Musique. Inscris-toi pour être informé en avant-première."/>
+  <title>Futurs Ateliers — I'DART | Douala</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="icon" type="image/svg+xml" href="logo.svg"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+<canvas id="sparkle-canvas" style="position:fixed;inset:0;pointer-events:none;z-index:9998;" aria-hidden="true"></canvas>
+
+<!-- ===== NAVIGATION ===== -->
+<nav id="nav" role="navigation" aria-label="Navigation principale">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="logo.svg" alt="I'DART" height="36"/></a>
+    <div class="nav-links">
+      <a href="index.html">Accueil</a>
+      <a href="danse.html">Danse AKD</a>
+      <a href="galerie.html">Galerie</a>
+      <a href="ateliers.html" class="active">Futurs Ateliers</a>
+      <a href="apropos.html">À propos</a>
+    </div>
+    <div class="nav-actions"><a href="danse.html#inscription" class="btn btn-gold btn-sm">S'inscrire</a></div>
+    <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="closeMobileNav()">Accueil</a>
+    <a href="danse.html" onclick="closeMobileNav()">Danse AKD</a>
+    <a href="galerie.html" onclick="closeMobileNav()">Galerie</a>
+    <a href="ateliers.html" onclick="closeMobileNav()">Futurs Ateliers</a>
+    <a href="apropos.html" onclick="closeMobileNav()">À propos</a>
+    <a href="danse.html#inscription" class="btn btn-gold" onclick="closeMobileNav()">S'inscrire</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" style="min-height:55svh;" aria-label="Futurs ateliers I'DART">
+  <div class="hero-bg">
+    <div class="orb orb-1" style="background:#F59E0B;"></div>
+    <div class="orb orb-2" style="background:#7C3AED;"></div>
+    <div class="orb orb-3" style="background:#10B981; opacity:0.25;"></div>
+    <div class="hero-bg-gradient"></div>
+  </div>
+  <div class="hero-content container">
+    <span class="hero-badge">🚀 Bientôt disponible</span>
+    <h1 class="hero-title">L'empire <span class="accent">I'DART</span><br/>arrive !</h1>
+    <p class="hero-sub">
+      Au-delà de la danse, I'DART prépare 3 nouveaux pôles artistiques. Laisse tes coordonnées pour être parmi les premiers informés.
+    </p>
+    <div class="hero-actions">
+      <a href="#preinscription" class="btn btn-gold">Je veux être informé</a>
+      <a href="danse.html" class="btn btn-outline">Voir la danse →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LES 3 PÔLES ===== -->
+<section class="section">
+  <div class="container reveal">
+    <span class="section-label">En préparation</span>
+    <h2 class="section-title">Les 3 pôles<br/>à venir</h2>
+    <p class="section-desc mt-2">
+      I'DART se construit autour de trois grands espaces créatifs, chacun dédié à une famille de disciplines artistiques. L'ouverture approche.
+    </p>
+
+    <div class="card-grid card-grid-3 mt-3">
+
+      <!-- Arts Visuels -->
+      <div class="teaser-card reveal reveal-d1">
+        <span class="teaser-badge">Pôle 1</span>
+        <div class="teaser-emoji">🎨</div>
+        <h3 style="color:var(--white); margin-bottom:0.5rem; font-size:1.4rem;">Arts Visuels</h3>
+        <p style="font-size:0.88rem; color:var(--purple-pale); margin-bottom:0.8rem;">
+          Exprime ta créativité à travers le dessin, la peinture et la poterie. Des ateliers pratiques pour tous les niveaux.
+        </p>
+        <ul class="teaser-items">
+          <li>Dessin &amp; peinture</li>
+          <li>Poterie &amp; modelage</li>
+          <li>Expression créative libre</li>
+        </ul>
+        <div style="margin-top:1.2rem; background:rgba(245,200,66,0.08); border-radius:8px; padding:0.7rem; text-align:center;">
+          <p style="font-size:0.78rem; color:var(--gold); font-weight:600;">~30 000 FCFA / mois</p>
+          <p style="font-size:0.72rem; color:var(--grey-text);">Tarif indicatif</p>
+        </div>
+      </div>
+
+      <!-- Taekwondo -->
+      <div class="teaser-card reveal reveal-d2">
+        <span class="teaser-badge">Pôle 2</span>
+        <div class="teaser-emoji">🥋</div>
+        <h3 style="color:var(--white); margin-bottom:0.5rem; font-size:1.4rem;">Art Martial</h3>
+        <p style="font-size:0.88rem; color:var(--purple-pale); margin-bottom:0.8rem;">
+          Discipline du corps et de l'esprit. Le taekwondo développe la concentration, le respect et la confiance en soi.
+        </p>
+        <ul class="teaser-items">
+          <li>Taekwondo tous niveaux</li>
+          <li>Discipline &amp; self-contrôle</li>
+          <li>Compétitions &amp; ceintures</li>
+        </ul>
+        <div style="margin-top:1.2rem; background:rgba(245,200,66,0.08); border-radius:8px; padding:0.7rem; text-align:center;">
+          <p style="font-size:0.78rem; color:var(--gold); font-weight:600;">~25 000 FCFA / mois</p>
+          <p style="font-size:0.72rem; color:var(--grey-text);">Tarif indicatif</p>
+        </div>
+      </div>
+
+      <!-- Musique -->
+      <div class="teaser-card reveal reveal-d3">
+        <span class="teaser-badge">Pôle 3</span>
+        <div class="teaser-emoji">🎵</div>
+        <h3 style="color:var(--white); margin-bottom:0.5rem; font-size:1.4rem;">Musique</h3>
+        <p style="font-size:0.88rem; color:var(--purple-pale); margin-bottom:0.8rem;">
+          Découvre ta voix et les instruments. Des cours de chant et d'instruments pour éveiller le musicien en toi.
+        </p>
+        <ul class="teaser-items">
+          <li>Chant &amp; technique vocale</li>
+          <li>Guitare &amp; piano</li>
+          <li>Percussions africaines</li>
+        </ul>
+        <div style="margin-top:1.2rem; background:rgba(245,200,66,0.08); border-radius:8px; padding:0.7rem; text-align:center;">
+          <p style="font-size:0.78rem; color:var(--gold); font-weight:600;">~25 000 FCFA / mois</p>
+          <p style="font-size:0.72rem; color:var(--grey-text);">Tarif indicatif</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- ===== COMPTEUR SYMBOLIQUE ===== -->
+<section class="section section-light" style="padding:2.5rem 1.2rem;">
+  <div class="container text-center reveal">
+    <p style="font-size:0.85rem; color:var(--purple-pale); letter-spacing:1px; text-transform:uppercase; margin-bottom:1.2rem;">Déjà intéressés</p>
+    <div style="font-family:'Cormorant Garamond',serif; font-size:3.5rem; font-weight:700; color:var(--gold); line-height:1;" id="counter">0</div>
+    <p style="color:var(--purple-pale); margin-top:0.5rem; font-size:0.9rem;">pré-inscriptions reçues</p>
+    <p style="font-size:0.8rem; color:var(--grey-text); margin-top:0.5rem;">Rejoins la liste — plus on est nombreux, plus vite ça ouvre !</p>
+    <a href="#preinscription" class="btn btn-gold" style="margin-top:1.5rem; display:inline-flex;">Rejoindre la liste ↓</a>
+  </div>
+</section>
+
+<hr class="divider"/>
+
+<!-- ===== FORMULAIRE PRÉ-INSCRIPTION ===== -->
+<section class="section" id="preinscription">
+  <div class="container reveal">
+    <span class="section-label">Pré-inscription</span>
+    <h2 class="section-title">Réserve ta <span class="text-gold">place</span></h2>
+    <p class="section-desc mt-2">
+      Les ateliers ne sont pas encore ouverts, mais tu peux laisser tes coordonnées dès maintenant. On te prévient en avant-première à l'ouverture — et tu bénéficies d'une <strong style="color:var(--gold)">réduction de 10%</strong> sur le premier mois !
+    </p>
+
+    <div class="form-card mt-3">
+      <form id="preInscriptionForm" novalidate>
+        <div class="form-group">
+          <label for="nomParent">Nom &amp; Prénom (ou parent) <span style="color:var(--orange)">*</span></label>
+          <input type="text" id="nomParent" name="nomParent" placeholder="Ex: Eyenga Marie-Claire" required autocomplete="name"/>
+        </div>
+
+        <div class="form-group">
+          <label for="whatsappParent">Numéro WhatsApp <span style="color:var(--orange)">*</span></label>
+          <input type="tel" id="whatsappParent" name="whatsappParent" placeholder="+237 6XX XXX XXX" required autocomplete="tel"/>
+        </div>
+
+        <div class="form-group">
+          <label>Ateliers souhaités <span style="color:var(--orange)">*</span></label>
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" name="ateliers" value="arts_visuels"/>
+              <span>🎨 Arts Visuels (Dessin, Poterie)</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="ateliers" value="taekwondo"/>
+              <span>🥋 Art Martial (Taekwondo)</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="ateliers" value="musique"/>
+              <span>🎵 Musique (Chant, Instruments)</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="enfants">Nombre d'enfants / personnes concernées</label>
+          <input type="number" id="enfants" name="enfants" placeholder="Ex: 2" min="1" max="10"/>
+        </div>
+
+        <button type="submit" class="btn btn-gold btn-full" id="submitPreBtn">
+          Réserver ma place en avant-première 🌟
+        </button>
+
+        <p style="font-size:0.78rem; color:var(--grey-text); text-align:center; margin-top:0.8rem;">
+          Aucun paiement demandé maintenant. Tu seras contacté(e) à l'ouverture.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <img src="logo.svg" alt="I'DART" class="footer-logo"/>
+  <nav class="footer-links">
+    <a href="index.html">Accueil</a>
+    <a href="danse.html">Danse AKD</a>
+    <a href="ateliers.html">Futurs Ateliers</a>
+    <a href="apropos.html">À propos</a>
+  </nav>
+  <p class="footer-legal">
+    Site édité par <strong>I'DART</strong>, entreprise de formation artistique et culturelle.<br/>
+    Galleries de Bonamoussadi, Douala, Cameroun.<br/>
+    Contact : <strong>+237 657 114 088</strong> · <strong>roxyann783@gmail.com</strong>
+  </p>
+  <p class="footer-copy">© 2025 I'DART / AKD Academy. Tous droits réservés.</p>
+</footer>
+
+<button class="scroll-top" id="scrollTop" aria-label="Revenir en haut">↑</button>
+<div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+<!-- Mobile float bar -->
+<div class="float-bar">
+  <a href="#preinscription" class="float-bar-book">⭐ Pré-inscription</a>
+  <a href="https://wa.me/237657114088?text=Bonjour%20I'DART%20!%20Je%20veux%20être%20informé(e)%20des%20prochains%20ateliers." class="float-bar-whatsapp" target="_blank" rel="noopener">💬 WhatsApp</a>
+</div>
+
+<script>
+  // --- Navbar scroll ---
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+
+  // --- Menu mobile ---
+  const toggle = document.getElementById('hamburger');
+  const menu   = document.getElementById('mobileNav');
+  toggle.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+  });
+  function closeMobileNav() {
+    menu.classList.remove('open');
+    toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }
+
+  // --- Scroll to top ---
+  const scrollBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => scrollBtn.classList.toggle('visible', window.scrollY > 400), { passive: true });
+  scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // --- Scroll reveal ---
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  // --- Counter animation ---
+  let count = parseInt(localStorage.getItem('preinscriptionCount') || '0');
+  const counterEl = document.getElementById('counter');
+  function animateCount(target) {
+    let current = 0;
+    const step  = Math.max(1, Math.ceil(target / 30));
+    const timer = setInterval(() => {
+      current = Math.min(current + step, target);
+      counterEl.textContent = current;
+      if (current >= target) clearInterval(timer);
+    }, 40);
+  }
+  animateCount(count);
+
+  // --- Toast ---
+  function showToast(msg, success = true) {
+    const t = document.getElementById('toast');
+    t.innerHTML = (success ? '✅ ' : '❌ ') + msg;
+    t.style.background = success
+      ? 'linear-gradient(135deg,#4C1D95,#7C3AED)'
+      : 'linear-gradient(135deg,#7F1D1D,#DC2626)';
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 5000);
+  }
+
+  // --- Formulaire pré-inscription ---
+  const GOOGLE_SCRIPT_URL = 'VOTRE_URL_GOOGLE_APPS_SCRIPT_ICI';
+
+  document.getElementById('preInscriptionForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn  = document.getElementById('submitPreBtn');
+    const form = e.target;
+    const nom  = form.nomParent.value.trim();
+    const tel  = form.whatsappParent.value.trim();
+    const boxes = [...form.querySelectorAll('input[name="ateliers"]:checked')].map(c => c.value);
+
+    if (!nom || !tel) {
+      showToast('Merci de remplir ton nom et ton numéro WhatsApp.', false);
+      return;
+    }
+    if (boxes.length === 0) {
+      showToast("Coche au moins un atelier qui t'intéresse.", false);
+      return;
+    }
+
+    btn.textContent = 'Envoi en cours…';
+    btn.disabled = true;
+
+    const data = {
+      type:     'preinscription_atelier',
+      nom, whatsapp: tel,
+      ateliers: boxes.join(', '),
+      enfants:  form.enfants.value || '1',
+      date:     new Date().toLocaleString('fr-FR')
+    };
+
+    try {
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST', mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      count++;
+      localStorage.setItem('preinscriptionCount', count);
+      counterEl.textContent = count;
+      showToast("Super ! Tu es sur la liste. On te contacte à l'ouverture. 🎉");
+      form.reset();
+    } catch(err) {
+      const ateliersTxt = boxes.map(b => ({ arts_visuels: 'Arts Visuels', taekwondo: 'Taekwondo', musique: 'Musique' }[b])).join(', ');
+      const msg = encodeURIComponent(`Bonjour I'DART ! Je veux être informé(e) des ateliers.\nNom: ${nom}\nWhatsApp: ${tel}\nAteliers: ${ateliersTxt}`);
+      window.open(`https://wa.me/237657114088?text=${msg}`, '_blank');
+      showToast('Redirigé vers WhatsApp.');
+      form.reset();
+    } finally {
+      btn.textContent = 'Réserver ma place en avant-première 🌟';
+      btn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>
