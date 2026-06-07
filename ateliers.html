@@ -351,7 +351,7 @@
     } catch(err) {
       const ateliersTxt = boxes.map(b => ({ arts_visuels: 'Arts Visuels', taekwondo: 'Taekwondo', musique: 'Musique' }[b])).join(', ');
       const msg = encodeURIComponent(`Bonjour I'DART ! Je veux être informé(e) des ateliers.\nNom: ${nom}\nWhatsApp: ${tel}\nAteliers: ${ateliersTxt}`);
-      window.open(`https://wa.me/message/AVI6Z66JVV3DN1
+      window.open('https://wa.me/message/AVI6Z66JVV3DN1', '_blank');
       showToast('Redirigé vers WhatsApp.');
       form.reset();
     } finally {

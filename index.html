@@ -723,7 +723,7 @@ document.getElementById('inscriptionForm').addEventListener('submit', async func
     document.getElementById('formSuccess').classList.add('show');
   } catch {
     const msg = encodeURIComponent(`Bonjour AKD ! Inscription: ${prenom} ${nom}, ${age} ans, ${whatsapp}`);
-    window.open(`https://wa.me/message/AVI6Z66JVV3DN1
+    window.open('https://wa.me/message/AVI6Z66JVV3DN1', '_blank');
     showToast('Redirigé vers WhatsApp.');
   } finally { btn.textContent = 'Envoyer mon inscription'; btn.disabled = false; }
 });
