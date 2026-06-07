@@ -71,12 +71,15 @@
     <div class="card-grid card-grid-3 mt-3">
 
       <!-- Arts Visuels -->
-      <div class="teaser-card reveal reveal-d1" style="background: linear-gradient(rgba(8,4,18,0.70), rgba(8,4,18,0.85)), url('img/peinture.avif') center/cover no-repeat;">
+      <div class="teaser-card reveal reveal-d1"
+           data-overlay="rgba(8,4,18,0.70), rgba(8,4,18,0.85)"
+           data-slides='["img/peinture.avif","img/poterie.jpg","img/dessin.jpg"]'
+           style="background: linear-gradient(rgba(8,4,18,0.70), rgba(8,4,18,0.85)), url(&quot;img/peinture.avif&quot;) center/cover no-repeat;">
         <span class="teaser-badge">Pôle 1</span>
         <div class="teaser-emoji">🎨</div>
         <h3 style="color:var(--white); margin-bottom:0.5rem; font-size:1.4rem;">Arts Visuels</h3>
         <p style="font-size:0.88rem; color:var(--purple-pale); margin-bottom:0.8rem;">
-          Exprime ta créativité à travers le dessin, la peinture et la poterie. Des ateliers pratiques pour tous les niveaux.
+          Exprime ta créativité à travers le dessin, la peinture et la poterie. Des ateliers pratiques pour tous les niveaux et tous les âges.
         </p>
         <ul class="teaser-items">
           <li>Dessin &amp; peinture</li>
@@ -89,13 +92,16 @@
         </div>
       </div>
 
-      <!-- Taekwondo -->
-      <div class="teaser-card reveal reveal-d2" style="background: linear-gradient(rgba(8,4,18,0.70), rgba(8,4,18,0.85)), url('img/taekwendo.jpeg') center/cover no-repeat;">
+      <!-- Art Martiaux -->
+      <div class="teaser-card reveal reveal-d2"
+           data-overlay="rgba(8,4,18,0.70), rgba(8,4,18,0.85)"
+           data-slides='["img/taekwendo.jpeg","img/photoTradionalGroupe.jpeg","img/entrainementTraditional.jpeg"]'
+           style="background: linear-gradient(rgba(8,4,18,0.70), rgba(8,4,18,0.85)), url(&quot;img/taekwendo.jpeg&quot;) center/cover no-repeat;">
         <span class="teaser-badge">Pôle 2</span>
         <div class="teaser-emoji">🥋</div>
-        <h3 style="color:var(--white); margin-bottom:0.5rem; font-size:1.4rem;">Art Martial</h3>
+        <h3 style="color:var(--white); margin-bottom:0.5rem; font-size:1.4rem;">Art Martiaux</h3>
         <p style="font-size:0.88rem; color:var(--purple-pale); margin-bottom:0.8rem;">
-          Discipline du corps et de l'esprit. Le taekwondo développe la concentration, le respect et la confiance en soi.
+          Discipline du corps et de l'esprit. Le taekwondo développe la concentration, le respect et la confiance en soi dès le plus jeune âge.
         </p>
         <ul class="teaser-items">
           <li>Taekwondo tous niveaux</li>
@@ -108,13 +114,16 @@
         </div>
       </div>
 
-      <!-- Musique -->
-      <div class="teaser-card reveal reveal-d3" style="background: linear-gradient(rgba(8,4,18,0.70), rgba(8,4,18,0.85)), url('img/Musique.jpg') center/cover no-repeat;">
+      <!-- Art Musical -->
+      <div class="teaser-card reveal reveal-d3"
+           data-overlay="rgba(8,4,18,0.70), rgba(8,4,18,0.85)"
+           data-slides='["img/Musique.jpg","img/chanelle.jpeg","img/finDeSeance.jpeg"]'
+           style="background: linear-gradient(rgba(8,4,18,0.70), rgba(8,4,18,0.85)), url(&quot;img/Musique.jpg&quot;) center/cover no-repeat;">
         <span class="teaser-badge">Pôle 3</span>
         <div class="teaser-emoji">🎵</div>
-        <h3 style="color:var(--white); margin-bottom:0.5rem; font-size:1.4rem;">Musique</h3>
+        <h3 style="color:var(--white); margin-bottom:0.5rem; font-size:1.4rem;">Art Musical</h3>
         <p style="font-size:0.88rem; color:var(--purple-pale); margin-bottom:0.8rem;">
-          Découvre ta voix et les instruments. Des cours de chant et d'instruments pour éveiller le musicien en toi.
+          Découvre ta voix et les instruments. Des cours de chant et d'instruments pour éveiller le musicien qui est en toi.
         </p>
         <ul class="teaser-items">
           <li>Chant &amp; technique vocale</li>
@@ -214,7 +223,7 @@
   <p class="footer-legal">
     Site édité par <strong>I'DART</strong>, entreprise de formation artistique et culturelle.<br/>
     Galleries de Bonamoussadi, Douala, Cameroun.<br/>
-    Contact : <strong>+237 690 628 991</strong> · <strong>roxyann783@gmail.com</strong>
+    Contact : <strong>+237 690 628 991</strong> · <strong>akdacademy237@gmail.com</strong>
   </p>
   <p class="footer-copy">© 2025 I'DART / AKD Academy. Tous droits réservés.</p>
 </footer>
@@ -225,7 +234,7 @@
 <!-- Mobile float bar -->
 <div class="float-bar">
   <a href="#preinscription" class="float-bar-book">⭐ Pré-inscription</a>
-  <a href="https://wa.me/237690628991?text=Bonjour%20I'DART%20!%20Je%20veux%20être%20informé(e)%20des%20prochains%20ateliers." class="float-bar-whatsapp" target="_blank" rel="noopener">💬 WhatsApp</a>
+  <a href="https://wa.me/message/AVI6Z66JVV3DN1" class="float-bar-whatsapp" target="_blank" rel="noopener">💬 WhatsApp</a>
 </div>
 
 <script>
@@ -257,6 +266,20 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  // --- Teaser card carousel ---
+  document.querySelectorAll('.teaser-card[data-slides]').forEach(card => {
+    let slides;
+    try { slides = JSON.parse(card.dataset.slides); } catch(e) { return; }
+    if (!slides || slides.length < 2) return;
+    const ov = card.dataset.overlay || 'rgba(8,4,18,0.72), rgba(8,4,18,0.88)';
+    let idx = 0;
+    const upd = () => {
+      card.style.background = `linear-gradient(${ov}), url("${slides[idx]}") center/cover no-repeat`;
+    };
+    upd();
+    setInterval(() => { idx = (idx + 1) % slides.length; upd(); }, 1000);
+  });
 
   // --- Counter animation ---
   let count = parseInt(localStorage.getItem('preinscriptionCount') || '0');
@@ -328,7 +351,7 @@
     } catch(err) {
       const ateliersTxt = boxes.map(b => ({ arts_visuels: 'Arts Visuels', taekwondo: 'Taekwondo', musique: 'Musique' }[b])).join(', ');
       const msg = encodeURIComponent(`Bonjour I'DART ! Je veux être informé(e) des ateliers.\nNom: ${nom}\nWhatsApp: ${tel}\nAteliers: ${ateliersTxt}`);
-      window.open(`https://wa.me/237690628991?text=${msg}`, '_blank');
+      window.open(`https://wa.me/message/AVI6Z66JVV3DN1
       showToast('Redirigé vers WhatsApp.');
       form.reset();
     } finally {
@@ -339,3 +362,6 @@
 </script>
 </body>
 </html>
+
+
+
