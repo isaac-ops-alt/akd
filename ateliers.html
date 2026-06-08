@@ -282,10 +282,7 @@
     nxt.className = 'card-bg-nxt';
     wrap.appendChild(cur); wrap.appendChild(nxt);
 
-    const cWrap = document.createElement('div');
-    cWrap.className = 'card-content-wrap';
-    Array.from(card.childNodes).forEach(n => cWrap.appendChild(n));
-    card.appendChild(wrap); card.appendChild(cWrap);
+    card.insertBefore(wrap, card.firstChild);
     card.style.background = 'transparent';
 
     const setBg = (el, i) => {

@@ -1555,9 +1555,11 @@ section.hero .hero-content {
 .reveal-d3.reveal { transition-delay: 0.24s; }
 
 /* ── SWIPE CAROUSEL BG LAYERS ──────────────────────────── */
+.teaser-card { position: relative; overflow: hidden; }
 .card-bg-wrap {
   position: absolute;
   inset: 0;
+  z-index: 1;
   overflow: hidden;
   border-radius: inherit;
   pointer-events: none;
@@ -1571,14 +1573,14 @@ section.hero .hero-content {
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
 }
-.card-content-wrap {
+/* Lift all direct card children above the bg layer */
+.disc-card > :not(.card-bg-wrap):not(.disc-badge),
+.teaser-card > :not(.card-bg-wrap):not(.teaser-badge) {
   position: relative;
+  z-index: 2;
 }
-.teaser-card .card-content-wrap {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
+.disc-card > .disc-badge,
+.teaser-card > .teaser-badge { z-index: 2; }
 
 /* ── TESTIMONIALS WITH IMAGE ────────────────────────────── */
 .testi-layout {
