@@ -1553,3 +1553,70 @@ section.hero .hero-content {
 .reveal-d1.reveal { transition-delay: 0.08s; }
 .reveal-d2.reveal { transition-delay: 0.16s; }
 .reveal-d3.reveal { transition-delay: 0.24s; }
+
+/* ── SWIPE CAROUSEL BG LAYERS ──────────────────────────── */
+.card-bg-wrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.card-bg-cur,
+.card-bg-nxt {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+.card-content-wrap {
+  position: relative;
+}
+.teaser-card .card-content-wrap {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* ── TESTIMONIALS WITH IMAGE ────────────────────────────── */
+.testi-layout {
+  display: flex;
+  gap: 44px;
+  align-items: stretch;
+}
+.testi-image-col {
+  flex: 0 0 280px;
+  border-radius: var(--r2);
+  overflow: hidden;
+}
+.testi-image-col img {
+  width: 100%;
+  height: 100%;
+  min-height: 540px;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+.testi-cards-col {
+  flex: 1;
+  min-width: 0;
+}
+.testi-cards-col .testi-grid {
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+@media (max-width: 960px) {
+  .testi-layout { flex-direction: column; }
+  .testi-image-col {
+    flex: none;
+    width: 100%;
+    max-height: 320px;
+  }
+  .testi-image-col img {
+    min-height: unset;
+    height: 320px;
+    object-position: center 30%;
+  }
+}

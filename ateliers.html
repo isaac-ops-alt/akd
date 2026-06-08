@@ -73,7 +73,7 @@
       <!-- Arts Visuels -->
       <div class="teaser-card reveal reveal-d1"
            data-overlay="rgba(8,4,18,0.70), rgba(8,4,18,0.85)"
-           data-slides='["img/peinture.avif","img/poterie.jpg","img/dessin.jpg"]'
+           data-slides='["img/peinture.avif","img/peinture1.jpg","img/poterie.jpg","img/dessin.jpg"]'
            style="background: linear-gradient(rgba(8,4,18,0.70), rgba(8,4,18,0.85)), url(&quot;img/peinture.avif&quot;) center/cover no-repeat;">
         <span class="teaser-badge">Pôle 1</span>
         <div class="teaser-emoji">🎨</div>
@@ -117,7 +117,7 @@
       <!-- Art Musical -->
       <div class="teaser-card reveal reveal-d3"
            data-overlay="rgba(8,4,18,0.70), rgba(8,4,18,0.85)"
-           data-slides='["img/Musique.jpg","img/chanelle.jpeg","img/finDeSeance.jpeg"]'
+           data-slides='["img/Musique.jpg","img/Musique1.jpg","img/Musique2.jpg","img/Musique3.jpg"]'
            style="background: linear-gradient(rgba(8,4,18,0.70), rgba(8,4,18,0.85)), url(&quot;img/Musique.jpg&quot;) center/cover no-repeat;">
         <span class="teaser-badge">Pôle 3</span>
         <div class="teaser-emoji">🎵</div>
@@ -223,7 +223,7 @@
   <p class="footer-legal">
     Site édité par <strong>I'DART</strong>, entreprise de formation artistique et culturelle.<br/>
     Galleries de Bonamoussadi, Douala, Cameroun.<br/>
-    Contact : <strong>+237 690 628 991</strong> · <strong>akdacademy237@gmail.com</strong>
+    Contact : <strong>+237 657 114 088</strong> · <strong>akdacademy237@gmail.com</strong>
   </p>
   <p class="footer-copy">© 2025 I'DART / AKD Academy. Tous droits réservés.</p>
 </footer>
@@ -267,18 +267,54 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-  // --- Teaser card carousel ---
+  // --- Teaser card carousel (swipe-left) ---
   document.querySelectorAll('.teaser-card[data-slides]').forEach(card => {
     let slides;
     try { slides = JSON.parse(card.dataset.slides); } catch(e) { return; }
     if (!slides || slides.length < 2) return;
     const ov = card.dataset.overlay || 'rgba(8,4,18,0.72), rgba(8,4,18,0.88)';
-    let idx = 0;
-    const upd = () => {
-      card.style.background = `linear-gradient(${ov}), url("${slides[idx]}") center/cover no-repeat`;
+
+    const wrap = document.createElement('div');
+    wrap.className = 'card-bg-wrap';
+    const cur = document.createElement('div');
+    cur.className = 'card-bg-cur';
+    const nxt = document.createElement('div');
+    nxt.className = 'card-bg-nxt';
+    wrap.appendChild(cur); wrap.appendChild(nxt);
+
+    const cWrap = document.createElement('div');
+    cWrap.className = 'card-content-wrap';
+    Array.from(card.childNodes).forEach(n => cWrap.appendChild(n));
+    card.appendChild(wrap); card.appendChild(cWrap);
+    card.style.background = 'transparent';
+
+    const setBg = (el, i) => {
+      el.style.background = `linear-gradient(${ov}), url("${slides[i]}") center/cover no-repeat`;
     };
-    upd();
-    setInterval(() => { idx = (idx + 1) % slides.length; upd(); }, 1000);
+    let idx = 0;
+    setBg(cur, 0);
+    setBg(nxt, 1 % slides.length);
+    nxt.style.transform = 'translateX(100%)';
+
+    let busy = false;
+    setInterval(() => {
+      if (busy) return;
+      busy = true;
+      const next = (idx + 1) % slides.length;
+      cur.style.transform = 'translateX(-100%)';
+      nxt.style.transform = 'translateX(0)';
+      nxt.addEventListener('transitionend', function h() {
+        nxt.removeEventListener('transitionend', h);
+        cur.style.transition = 'none'; nxt.style.transition = 'none';
+        setBg(cur, next); cur.style.transform = 'translateX(0)';
+        nxt.style.transform = 'translateX(100%)';
+        setBg(nxt, (next + 1) % slides.length);
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          cur.style.transition = ''; nxt.style.transition = '';
+          idx = next; busy = false;
+        }));
+      }, { once: true });
+    }, 2000);
   });
 
   // --- Counter animation ---
